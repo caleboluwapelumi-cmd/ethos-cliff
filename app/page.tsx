@@ -8,7 +8,6 @@ import RotatingBadge from "@/components/RotatingBadge";
 import Magnetic from "@/components/Magnetic";
 import FaviconPlaceholder from "@/components/FaviconPlaceholder";
 import ImageReveal from "@/components/ImageReveal";
-import FingerprintMark from "@/components/FingerprintMark";
 import { getProjects, getDriveImageUrl } from "@/lib/projects";
 
 export const revalidate = 300;
@@ -65,14 +64,28 @@ export default async function Home() {
     <main>
       {/* ─────────── Hero ─────────── */}
       <section
-        className="relative flex min-h-screen flex-col justify-center overflow-hidden"
+        className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-24 sm:pt-20"
         style={{ background: "#FFFFFF" }}
       >
         <div
           className="pointer-events-none absolute"
-          style={{ right: "-5%", bottom: "-10%", zIndex: 0 }}
+          style={{
+            right: "-6%",
+            bottom: "-10%",
+            width: "760px",
+            maxWidth: "70vw",
+            zIndex: 0,
+          }}
+          aria-hidden="true"
         >
-          <FingerprintMark size={700} opacity={0.07} />
+          <Image
+            src="/images/hero-mark.png"
+            alt=""
+            width={1743}
+            height={902}
+            priority
+            style={{ width: "100%", height: "auto", opacity: 0.1 }}
+          />
         </div>
 
         <div className="container relative" style={{ zIndex: 1 }}>
@@ -177,12 +190,18 @@ export default async function Home() {
                 </Link>
               </div>
 
-              {/* Portrait placeholder (40%) */}
+              {/* Portrait (40%) */}
               <div
-                className="relative aspect-[3/4] w-full"
-                style={{ border: "1px solid var(--ec-line)" }}
+                className="relative aspect-[3/4] w-full overflow-hidden"
+                style={{ border: "1px solid var(--ec-line)", borderRadius: "8px" }}
               >
-                <FaviconPlaceholder label="Photo coming soon" />
+                <Image
+                  src="/images/ceo.jpeg"
+                  alt="The-Olu Bamigboye — Founder, Ethos Cliff"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 40vw, 90vw"
+                />
               </div>
             </div>
           </ScrollReveal>

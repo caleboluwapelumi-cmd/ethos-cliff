@@ -15,7 +15,7 @@ export default async function PortfolioPage() {
   return (
     <main>
       {/* ─────────── Hero ─────────── */}
-      <section className="flex min-h-[40vh] flex-col justify-center">
+      <section className="flex min-h-[40vh] flex-col justify-center pt-24 sm:pt-28">
         <div className="container">
           <p className="eyebrow motion-safe:animate-fade-up">Selected Work</p>
           <div className="mt-4">

@@ -12,9 +12,9 @@
   --ec-ink-soft: #55514a;
   --ec-ink-faint: #8d8878;
 
-  /* Secondary — red */
-  --ec-red: #d4241a;
-  --ec-red-hover: #b31c13;
+  /* Secondary — mild wine */
+  --ec-red: #7a2e3d;
+  --ec-red-hover: #5e212c;
 
   /* Hairlines */
   --ec-line: #ddd5c1;
@@ -195,7 +195,7 @@ noscript .curtain {
   height: 64px;
   margin: -32px 0 0 -32px;
   border-color: var(--ec-red);
-  background: rgba(212, 36, 26, 0.06);
+  background: rgba(122, 46, 61, 0.06);
   opacity: 1;
 }
 
