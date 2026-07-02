@@ -18,6 +18,7 @@ export default function Nav() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [heroIsDark, setHeroIsDark] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -25,6 +26,13 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const firstSection = document.querySelector("main > section:first-child");
+    setHeroIsDark(firstSection?.getAttribute("data-cursor-surface") === "ink");
+  }, [pathname]);
+
+  const showInverted = heroIsDark && !scrolled;
 
   useEffect(() => {
     setMenuOpen(false);
@@ -61,7 +69,7 @@ export default function Nav() {
           href="/"
           className="block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30"
         >
-          <WordMark showMark color="var(--ec-ink)" />
+          <WordMark showMark tone={showInverted ? "on-ink" : "ink"} />
         </Link>
 
         {/* Desktop links */}
@@ -75,7 +83,7 @@ export default function Nav() {
                   <Magnetic strength={0.4}>
                     <Link
                       href={href}
-                      className="nav-link-contact"
+                      className={showInverted ? "nav-link-contact-inverted" : "nav-link-contact"}
                       aria-current={active ? "page" : undefined}
                     >
                       {label}
@@ -84,7 +92,7 @@ export default function Nav() {
                 ) : (
                   <Link
                     href={href}
-                    className={`nav-link${active ? " is-active" : ""}`}
+                    className={`${showInverted ? "nav-link-inverted" : "nav-link"}${active ? " is-active" : ""}`}
                     aria-current={active ? "page" : undefined}
                   >
                     {label}
@@ -103,6 +111,7 @@ export default function Nav() {
           aria-controls="mobile-menu"
           onClick={() => setMenuOpen((v) => !v)}
           className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-md text-ec-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 md:hidden"
+          style={showInverted ? { color: "var(--ec-on-ink)" } : undefined}
         >
           <span
             className={`h-0.5 w-6 rounded-full bg-current transition-all duration-200 ${

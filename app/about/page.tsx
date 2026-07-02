@@ -22,15 +22,19 @@ export default function AboutPage() {
   return (
     <main>
       {/* ─────────── Hero ─────────── */}
-      <section className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden pt-24 sm:pt-28">
+      <section
+        data-cursor-surface="ink"
+        className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden pt-24 sm:pt-28"
+        style={{ background: "var(--ec-ink)" }}
+      >
         <div
-          className="pointer-events-none absolute left-1/2 top-1/2 motion-safe:animate-logo-in-05"
+          className="pointer-events-none absolute left-1/2 top-1/2 motion-safe:animate-logo-in-12"
           style={{
             transform: "translate(-50%, -50%)",
             width: "min(900px, 80vw)",
             height: "65vh",
             zIndex: 0,
-            opacity: 0.05,
+            opacity: 0.12,
             animationDelay: "200ms",
           }}
           aria-hidden="true"
@@ -45,13 +49,17 @@ export default function AboutPage() {
         </div>
 
         <div className="container relative" style={{ zIndex: 1 }}>
-          <p className="eyebrow motion-safe:animate-fade-up">
+          <p
+            className="eyebrow motion-safe:animate-fade-up"
+            style={{ color: "var(--ec-on-ink-soft)" }}
+          >
             Our Story Is About Yours
           </p>
           <div className="mt-4">
             <TextReveal
               as="h1"
               className="text-hero"
+              style={{ color: "var(--ec-on-ink)" }}
               lines={[
                 <span key="l1">We Were Built for</span>,
                 <span key="l2">Businesses Like Yours.</span>,

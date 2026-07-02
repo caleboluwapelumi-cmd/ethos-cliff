@@ -128,9 +128,23 @@ body::before {
   animation: logo-watermark-in-05 1200ms ease-out both;
 }
 
+@keyframes logo-watermark-in-12 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.12;
+  }
+}
+
+@utility animate-logo-in-12 {
+  animation: logo-watermark-in-12 1200ms ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-logo-in-06,
-  .animate-logo-in-05 {
+  .animate-logo-in-05,
+  .animate-logo-in-12 {
     animation: none;
   }
 }
@@ -599,6 +613,26 @@ noscript .curtain {
   text-decoration: underline;
   text-decoration-color: var(--ec-red);
   text-underline-offset: 4px;
+}
+
+.nav-link-contact-inverted {
+  display: inline-flex;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ec-on-ink-soft);
+  border: 1px solid var(--ec-line-on-ink);
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.nav-link-contact-inverted:hover {
+  border-color: var(--ec-red);
+  color: var(--ec-red);
 }
 
 .footer-link {
