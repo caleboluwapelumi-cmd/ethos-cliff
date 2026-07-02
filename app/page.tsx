@@ -1,58 +1,74 @@
 import Link from "next/link";
 import Image from "next/image";
-import LiveClock from "@/components/LiveClock";
 import ScrollReveal from "@/components/ScrollReveal";
 import TextReveal from "@/components/TextReveal";
-import Marquee from "@/components/Marquee";
 import RotatingBadge from "@/components/RotatingBadge";
 import Magnetic from "@/components/Magnetic";
-import FaviconPlaceholder from "@/components/FaviconPlaceholder";
 import ImageReveal from "@/components/ImageReveal";
 import { getProjects, getDriveImageUrl } from "@/lib/projects";
 
 export const revalidate = 300;
 
-const marqueeItems = [
-  "VIDEO EDITING",
-  "PERSONAL BRANDING",
-  "BUSINESS BRANDING",
-  "SEO",
-  "GRAPHIC DESIGN",
-  "ELEVATIONS",
-  "SOCIAL MEDIA",
+const placeholderWork = [
+  {
+    img: "/images/work/placeholder-1.jpg",
+    title: "Brand Identity System",
+    category: "Branding",
+  },
+  {
+    img: "/images/work/placeholder-2.jpg",
+    title: "Digital Presence Refresh",
+    category: "Web & SEO",
+  },
+  {
+    img: "/images/work/placeholder-3.jpg",
+    title: "Content & Campaign Design",
+    category: "Social Media",
+  },
 ];
 
 const services = [
-  { n: "01", name: "Video Editing", hook: "Your audience is scrolling. Fast." },
+  {
+    n: "01",
+    name: "Video Editing",
+    hook: "Your audience is scrolling. Fast.",
+    img: "/images/services/video-editing.jpg",
+  },
   {
     n: "02",
     name: "Personal Branding",
     hook: "People don't just buy products. They buy people.",
+    img: "/images/services/personal-branding.jpg",
   },
   {
     n: "03",
     name: "Business Branding",
     hook: "First impressions are permanent.",
+    img: "/images/services/business-branding.jpg",
   },
   {
     n: "04",
     name: "Search Engine Optimisation (SEO)",
     hook: "Your dream client is searching for you right now.",
+    img: "/images/services/seo.jpg",
   },
   {
     n: "05",
     name: "Graphics Design",
     hook: "In a world full of noise, great design is silence.",
+    img: "/images/services/graphic-design.jpg",
   },
   {
     n: "06",
     name: "Elevations",
     hook: "You've built something real. Now let's make it legendary.",
+    img: "/images/services/elevations.jpg",
   },
   {
     n: "07",
     name: "Social Media Management",
     hook: "Consistency is a superpower most businesses underestimate.",
+    img: "/images/services/social-media.jpg",
   },
 ] as const;
 
@@ -141,18 +157,8 @@ export default async function Home() {
               </Link>
             </Magnetic>
           </div>
-
-          <div
-            className="mt-10 motion-safe:animate-fade-up"
-            style={{ animationDelay: "450ms" }}
-          >
-            <LiveClock color="#6b6b6b" />
-          </div>
         </div>
       </section>
-
-      {/* ─────────── Marquee strip ─────────── */}
-      <Marquee items={marqueeItems} />
 
       {/* ─────────── About teaser ─────────── */}
       <section className="section">
@@ -237,19 +243,19 @@ export default async function Home() {
                       className="group relative block h-[60vh] w-full overflow-hidden"
                       style={{ border: "1px solid var(--ec-line)" }}
                     >
-                      {project.coverImageId ? (
-                        <ImageReveal className="h-full w-full">
-                          <Image
-                            src={getDriveImageUrl(project.coverImageId)}
-                            alt={project.title}
-                            fill
-                            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                            unoptimized
-                          />
-                        </ImageReveal>
-                      ) : (
-                        <FaviconPlaceholder />
-                      )}
+                      <ImageReveal className="h-full w-full">
+                        <Image
+                          src={
+                            project.coverImageId
+                              ? getDriveImageUrl(project.coverImageId)
+                              : placeholderWork[i % placeholderWork.length].img
+                          }
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                          unoptimized={Boolean(project.coverImageId)}
+                        />
+                      </ImageReveal>
 
                       {/* Bottom-left title/category scrim */}
                       <div
@@ -286,13 +292,32 @@ export default async function Home() {
                     </Link>
                   </ScrollReveal>
                 ))
-              : Array.from({ length: 3 }, (_, i) => (
-                  <ScrollReveal key={i} delay={i * 60}>
+              : placeholderWork.map((item, i) => (
+                  <ScrollReveal key={item.title} delay={i * 60}>
                     <div
-                      className="relative h-[60vh] w-full"
+                      className="group relative block h-[60vh] w-full overflow-hidden"
                       style={{ border: "1px solid var(--ec-line)" }}
                     >
-                      <FaviconPlaceholder />
+                      <ImageReveal className="h-full w-full">
+                        <Image
+                          src={item.img}
+                          alt={item.title}
+                          fill
+                          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                        />
+                      </ImageReveal>
+
+                      <div
+                        className="absolute inset-x-0 bottom-0 p-8"
+                        style={{ background: "rgba(18,17,16,0.6)" }}
+                      >
+                        <span className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
+                          {item.category}
+                        </span>
+                        <h3 className="mt-2 text-h3" style={{ color: "var(--ec-on-ink)" }}>
+                          {item.title}
+                        </h3>
+                      </div>
                     </div>
                   </ScrollReveal>
                 ))}
@@ -324,35 +349,47 @@ export default async function Home() {
             </div>
           </ScrollReveal>
 
-          <div className="mt-12">
-            {services.map(({ n, name, hook }, i) => (
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map(({ n, name, hook, img }, i) => (
               <ScrollReveal key={n} delay={i * 30}>
-                <div className="service-row">
-                  <div className="flex items-baseline gap-6">
+                <Link href="/services" className="card group block h-full overflow-hidden">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <ImageReveal className="h-full w-full">
+                      <Image
+                        src={img}
+                        alt={name}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                      />
+                    </ImageReveal>
                     <span
+                      className="absolute left-4 top-4"
                       style={{
                         fontFamily: "var(--font-display)",
                         fontWeight: 700,
-                        fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-                        color: "var(--ec-line-strong)",
+                        fontSize: "1.05rem",
+                        color: "var(--ec-on-ink)",
+                        background: "rgba(18,17,16,0.55)",
+                        padding: "0.3rem 0.65rem",
                       }}
                     >
                       {n}
                     </span>
-                    <span className="service-row-name text-h3">{name}</span>
                   </div>
-                  <span
-                    className="hidden text-right sm:block"
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      color: "var(--ec-ink-faint)",
-                      fontSize: "0.9rem",
-                      maxWidth: "32ch",
-                    }}
-                  >
-                    {hook}
-                  </span>
-                </div>
+                  <div className="p-6">
+                    <h3 className="text-h3">{name}</h3>
+                    <p
+                      className="mt-2"
+                      style={{
+                        fontFamily: "var(--font-sans)",
+                        color: "var(--ec-ink-faint)",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      {hook}
+                    </p>
+                  </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
@@ -394,7 +431,7 @@ export default async function Home() {
             <div className="mt-10 flex justify-center">
               <Magnetic>
                 <Link href="/contact" className="btn-invert">
-                  Claim Your Free Consultation
+                  Consult with Me
                 </Link>
               </Magnetic>
             </div>
