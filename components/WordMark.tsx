@@ -17,7 +17,7 @@ export default function WordMark({
 }: Props) {
   const headline = size === "lg" ? "1.5rem" : "1.1rem";
   const toneHeadlineColor = tone === "ink" ? "var(--ec-ink)" : "var(--ec-on-ink)";
-  const toneBylineColor = tone === "ink" ? "var(--ec-ink-faint)" : "var(--ec-on-ink-soft)";
+  const toneBylineColor = tone === "ink" ? "var(--ec-ink)" : "var(--ec-on-ink)";
   const headlineColor = color ?? toneHeadlineColor;
   const bylineColor = color ?? toneBylineColor;
 
@@ -61,7 +61,6 @@ export default function WordMark({
             fontSize: `calc(${headline} * 0.7)`,
             fontWeight: 400,
             color: bylineColor,
-            opacity: 0.6,
           }}
         >
           by The-Olu Bamigboye
@@ -91,7 +90,6 @@ export default function WordMark({
           fontSize: `calc(${headline} * 0.7)`,
           fontWeight: 400,
           color: bylineColor,
-          opacity: 0.6,
         }}
       >
         by The-Olu Bamigboye
