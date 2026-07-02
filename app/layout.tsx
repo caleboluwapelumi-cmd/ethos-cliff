@@ -34,6 +34,9 @@ export default function RootLayout({
       lang="en"
       className={`${rubik.variable} ${montserrat.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="icon" href="/favicon.png" />
+      </head>
       <body className="flex min-h-full flex-col overflow-x-hidden font-sans">
         <CustomCursor />
         <Nav />

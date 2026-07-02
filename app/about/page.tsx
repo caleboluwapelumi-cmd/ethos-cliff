@@ -1,9 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
 import StatsCounter from "@/components/StatsCounter";
 import TextReveal from "@/components/TextReveal";
 import Magnetic from "@/components/Magnetic";
-import FaviconPlaceholder from "@/components/FaviconPlaceholder";
 
 export const metadata = {
   title: "About — Ethos Cliff",
@@ -44,13 +44,23 @@ export default function AboutPage() {
       <section className="section divider">
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
-            {/* Portrait placeholder */}
+            {/* Portrait */}
             <ScrollReveal>
               <div
-                className="relative mx-auto aspect-[4/5] w-full max-w-[380px]"
-                style={{ border: "1px solid var(--ec-line)" }}
+                className="relative mx-auto aspect-[4/5] w-full max-w-[380px] overflow-hidden"
+                style={{
+                  border: "1px solid var(--ec-line)",
+                  borderRadius: "8px",
+                }}
               >
-                <FaviconPlaceholder label="The-Olu Bamigboye" />
+                <Image
+                  src="/images/ceo.jpeg"
+                  alt="The-Olu Bamigboye — Founder, Ethos Cliff"
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 380px, 80vw"
+                  priority
+                />
               </div>
             </ScrollReveal>
 
