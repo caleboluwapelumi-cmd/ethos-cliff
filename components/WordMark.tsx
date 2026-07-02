@@ -21,26 +21,47 @@ export default function WordMark({
   const headlineColor = color ?? toneHeadlineColor;
   const bylineColor = color ?? toneBylineColor;
 
+  const dividerColor = color ?? headlineColor;
+  const divider = (
+    <span
+      aria-hidden="true"
+      style={{
+        display: "inline-block",
+        width: 1,
+        height: `calc(${headline} * 0.6)`,
+        margin: "0 0.75rem",
+        background: dividerColor,
+        opacity: 0.3,
+      }}
+    />
+  );
+
   if (showMark) {
     const logoHeight = size === "lg" ? 40 : 36;
     const logoWidth = Math.round(logoHeight * LOGO_ASPECT);
 
     return (
-      <span className="flex flex-col gap-[2px] leading-none">
+      <span className="flex items-center leading-none">
         <Image
           src="/images/logo-mark.png"
           alt="Ethos Cliff"
           height={logoHeight}
           width={logoWidth}
           priority
-          style={{ height: logoHeight, width: "auto" }}
+          style={{
+            height: logoHeight,
+            width: "auto",
+            filter: tone === "on-ink" ? "invert(1)" : "none",
+          }}
         />
+        {divider}
         <span
           style={{
             fontFamily: "var(--font-sans)",
-            fontSize: "0.65rem",
+            fontSize: `calc(${headline} * 0.7)`,
             fontWeight: 400,
             color: bylineColor,
+            opacity: 0.6,
           }}
         >
           by The-Olu Bamigboye
@@ -50,7 +71,7 @@ export default function WordMark({
   }
 
   return (
-    <span className="flex flex-col gap-[2px] leading-none">
+    <span className="flex items-center leading-none">
       <span
         style={{
           fontFamily: "var(--font-display)",
@@ -63,12 +84,14 @@ export default function WordMark({
       >
         Ethos Cliff
       </span>
+      {divider}
       <span
         style={{
           fontFamily: "var(--font-sans)",
-          fontSize: `calc(${headline} * 0.65)`,
+          fontSize: `calc(${headline} * 0.7)`,
           fontWeight: 400,
           color: bylineColor,
+          opacity: 0.6,
         }}
       >
         by The-Olu Bamigboye
