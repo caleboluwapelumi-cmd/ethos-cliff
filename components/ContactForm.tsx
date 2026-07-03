@@ -147,6 +147,7 @@ export default function ContactForm() {
       </div>
 
       <form noValidate onSubmit={advance} className="space-y-8">
+      <div key={step} className="motion-safe:animate-fade-in space-y-8" style={{ animationDuration: "200ms" }}>
         {/* ── Step 1 — About You ── */}
         {step === 1 && (
           <>
@@ -311,6 +312,7 @@ export default function ContactForm() {
             </Field>
           </>
         )}
+      </div>
 
         {/* Navigation */}
         <div className="flex items-center justify-between gap-4 pt-2">

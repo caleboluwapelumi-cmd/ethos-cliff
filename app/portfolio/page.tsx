@@ -29,6 +29,13 @@ export default async function PortfolioPage() {
               ]}
             />
           </div>
+          <p
+            className="mt-6 text-body motion-safe:animate-fade-up"
+            style={{ maxWidth: "48ch", fontSize: "1.05rem", animationDelay: "300ms" }}
+          >
+            A growing collection of work across branding, content, and
+            digital strategy.
+          </p>
         </div>
       </section>
 

@@ -77,16 +77,21 @@ export default function ProcessTimeline() {
             className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             <span
+              aria-hidden="true"
+              className="block"
               style={{
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
-                fontSize: "1.5rem",
+                fontSize: "clamp(3rem, 5vw, 5rem)",
                 color: "var(--ec-red)",
+                opacity: 0.15,
+                lineHeight: 1,
+                marginBottom: "-1.25rem",
               }}
             >
               {n}
             </span>
-            <h3 className="mt-3 text-h3">{name}</h3>
+            <h3 className="relative text-h3">{name}</h3>
             <p className="mt-2 text-body" style={{ maxWidth: "24ch" }}>
               {desc}
             </p>

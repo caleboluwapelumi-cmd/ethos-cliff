@@ -71,44 +71,76 @@ export default function AboutPage() {
 
       {/* ─────────── Our Story ─────────── */}
       <section className="section divider">
-        <div className="container" style={{ maxWidth: "760px" }}>
-          <ScrollReveal>
-            <p className="eyebrow">How We Started</p>
-            <h2 className="mt-5 text-h2">
-              Built for the Overlooked. Designed for the Bold.
-            </h2>
-          </ScrollReveal>
+        <div className="container">
+          <div className="grid gap-12 lg:grid-cols-[35%_1fr] lg:gap-16">
+            {/* Big statement (35%) */}
+            <ScrollReveal>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 700,
+                  fontSize: "clamp(2rem, 4vw, 3.5rem)",
+                  lineHeight: 1.05,
+                  color: "var(--ec-ink)",
+                }}
+              >
+                5+ Years.
+                <br />
+                50+ Brands.
+                <br />
+                One Conviction.
+              </p>
+            </ScrollReveal>
 
-          <ScrollReveal delay={80}>
-            <p className="mt-10 text-body" style={{ fontSize: "1.15rem", maxWidth: "none" }}>
-              Ethos Cliff wasn&rsquo;t built in a boardroom. It was built
-              from watching brilliant businesses stay invisible &mdash; not
-              because they lacked quality, but because the world
-              couldn&rsquo;t see them clearly enough. We saw founders with
-              real vision struggling to communicate it. Creatives with
-              genuine talent being overlooked. Small businesses with big
-              potential stuck behind generic branding that said nothing
-              about who they really were. So we built the agency we wished
-              existed. One that listens before it designs. One that asks the
-              uncomfortable questions &mdash; and then builds something that
-              answers them.
-            </p>
-          </ScrollReveal>
+            {/* Body copy (65%) */}
+            <div style={{ maxWidth: "760px" }}>
+              <ScrollReveal>
+                <p className="eyebrow">How We Started</p>
+                <h2 className="mt-5 text-h2">
+                  Built for the Overlooked. Designed for the Bold.
+                </h2>
+              </ScrollReveal>
+
+              <ScrollReveal delay={80}>
+                <p className="mt-10 text-body" style={{ fontSize: "1.15rem", maxWidth: "none" }}>
+                  Ethos Cliff wasn&rsquo;t built in a boardroom. It was built
+                  from watching brilliant businesses stay invisible &mdash; not
+                  because they lacked quality, but because the world
+                  couldn&rsquo;t see them clearly enough. We saw founders with
+                  real vision struggling to communicate it. Creatives with
+                  genuine talent being overlooked. Small businesses with big
+                  potential stuck behind generic branding that said nothing
+                  about who they really were. So we built the agency we wished
+                  existed. One that listens before it designs. One that asks the
+                  uncomfortable questions &mdash; and then builds something that
+                  answers them.
+                </p>
+              </ScrollReveal>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ─────────── Meet the CEO ─────────── */}
-      <section className="section divider">
+      <section
+        data-cursor-surface="ink"
+        className="section divider"
+        style={{ background: "var(--ec-ink)" }}
+      >
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:items-center">
             {/* Portrait */}
             <ScrollReveal>
               <div>
-                <p className="eyebrow">The Mind Behind the Brand</p>
-                <h2 className="mt-4 mb-8 text-h2 lg:hidden">Meet the CEO.</h2>
+                <p className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
+                  The Mind Behind the Brand
+                </p>
+                <h2 className="mt-4 mb-8 text-h2 lg:hidden" style={{ color: "var(--ec-on-ink)" }}>
+                  Meet the CEO.
+                </h2>
                 <div
                   className="relative mx-auto aspect-[4/5] w-full max-w-[380px] overflow-hidden"
-                  style={{ borderRadius: "8px" }}
+                  style={{ borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}
                 >
                   <Image
                     src="/images/ceo.jpeg"
@@ -124,22 +156,35 @@ export default function AboutPage() {
             {/* Bio copy */}
             <div>
               <ScrollReveal>
-                <h2 className="hidden text-h2 lg:block">Meet the CEO.</h2>
+                <h2 className="hidden text-h2 lg:block" style={{ color: "var(--ec-on-ink)" }}>
+                  Meet the CEO.
+                </h2>
                 <p className="mt-4" style={{
                   fontFamily: "var(--font-sans)",
                   fontWeight: 600,
-                  color: "var(--ec-ink)",
+                  color: "var(--ec-on-ink)",
                   fontSize: "1.05rem",
                 }}>
                   Israel Olumide Bamigboye
                 </p>
-                <p className="eyebrow mt-1" style={{ textTransform: "none", letterSpacing: 0 }}>
+                <p
+                  className="eyebrow mt-1"
+                  style={{ textTransform: "none", letterSpacing: 0, color: "var(--ec-on-ink-soft)" }}
+                >
                   @TheOlu_Bams &middot; Founder &amp; Creative Director, Ethos Cliff
                 </p>
               </ScrollReveal>
 
               <ScrollReveal delay={80}>
-                <p className="mt-8 text-body" style={{ fontSize: "1.05rem", maxWidth: "none" }}>
+                <p
+                  className="mt-8"
+                  style={{
+                    fontFamily: "var(--font-sans)",
+                    fontSize: "1.05rem",
+                    lineHeight: 1.65,
+                    color: "var(--ec-on-ink-soft)",
+                  }}
+                >
                   Israel Olumide Bamigboye &mdash; known across the creative
                   world as TheOlu_Bams &mdash; is the founder and creative
                   director of Ethos Cliff. With over 5 years building brands
@@ -160,22 +205,58 @@ export default function AboutPage() {
 
       {/* ─────────── Our Philosophy ─────────── */}
       <section className="section divider" style={{ background: "var(--ec-paper-deep)" }}>
-        <div className="container" style={{ maxWidth: "760px" }}>
+        <div className="container">
           <ScrollReveal>
             <p className="eyebrow">What We Believe</p>
             <h2 className="mt-5 text-h2">A Few Things We Hold True.</h2>
           </ScrollReveal>
 
-          <div className="mt-12 space-y-8">
-            {[
-              "Brand is not decoration. It's communication.",
-              "Visibility without strategy is just noise.",
-              "The right story, told right, changes everything.",
-            ].map((belief, i) => (
-              <ScrollReveal key={belief} delay={i * 80}>
-                <p className="pull-quote">&ldquo;{belief}&rdquo;</p>
-              </ScrollReveal>
-            ))}
+          <div className="mt-16">
+            <ScrollReveal>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 700,
+                  color: "var(--ec-ink)",
+                  fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+                  lineHeight: 1.25,
+                  paddingBlock: "2rem",
+                }}
+              >
+                &ldquo;Brand is not decoration. It&rsquo;s communication.&rdquo;
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={80}>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 700,
+                  color: "var(--ec-ink-soft)",
+                  fontSize: "clamp(1.35rem, 2.5vw, 2rem)",
+                  lineHeight: 1.3,
+                  paddingBlock: "2rem",
+                  marginLeft: "18%",
+                }}
+              >
+                &ldquo;Visibility without strategy is just noise.&rdquo;
+              </p>
+            </ScrollReveal>
+
+            <ScrollReveal delay={160}>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 700,
+                  color: "var(--ec-ink)",
+                  fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+                  lineHeight: 1.25,
+                  paddingBlock: "2rem",
+                }}
+              >
+                &ldquo;The right story, told right, changes everything.&rdquo;
+              </p>
+            </ScrollReveal>
           </div>
         </div>
       </section>

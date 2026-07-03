@@ -181,7 +181,7 @@ noscript .curtain {
   left: 0;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 250;
+  z-index: 350;
   will-change: transform;
 }
 
@@ -466,6 +466,38 @@ noscript .curtain {
 }
 
 .btn-invert:focus-visible {
+  outline: 2px solid var(--ec-on-ink);
+  outline-offset: 3px;
+}
+
+/* Used on the red CTA band — white bg / red text, inverts on hover */
+.btn-invert-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ec-on-ink);
+  color: var(--ec-red);
+  padding: 0.85rem 2rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
+}
+
+.btn-invert-red:hover {
+  background: var(--ec-red-hover);
+  color: var(--ec-on-ink);
+  border-color: var(--ec-on-ink);
+}
+
+.btn-invert-red:focus-visible {
   outline: 2px solid var(--ec-on-ink);
   outline-offset: 3px;
 }
@@ -833,6 +865,24 @@ noscript .curtain {
     transition: none;
     width: 100%;
   }
+}
+
+/* ── Portfolio placeholder cards ── */
+.ph-card-tile {
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .ph-card-tile {
+  transform: scale(1.02);
+}
+
+.ph-card-title {
+  color: var(--ec-ink-soft);
+  transition: color 200ms ease;
+}
+
+.group:hover .ph-card-title {
+  color: var(--ec-ink);
 }
 
 /* ── Favicon-based image placeholders ── */

@@ -13,11 +13,125 @@ function driveUrl(fileId: string) {
 
 const PAGE_SIZE = 9;
 
+// PLACEHOLDER — replace with real Sheets data when available
+const placeholderProjects = [
+  { title: "The Apex Rebrand", category: "Business Branding", year: "2024" },
+  { title: "Verve Social Campaign", category: "Social Media Management", year: "2024" },
+  { title: "Luminary Personal Brand", category: "Personal Branding", year: "2025" },
+  { title: "NovaCraft SEO Overhaul", category: "SEO", year: "2024" },
+  { title: "Pulse Video Series", category: "Video Editing", year: "2025" },
+  { title: "Terra Elevation Project", category: "Elevations", year: "2024" },
+  { title: "Orbit Graphics Suite", category: "Graphics Design", year: "2025" },
+  { title: "Beacon Brand Identity", category: "Business Branding", year: "2025" },
+  { title: "Rize Personal Brand", category: "Personal Branding", year: "2024" },
+] as const;
+
+const placeholderCategories = [
+  "All",
+  "Video Editing",
+  "Personal Branding",
+  "Business Branding",
+  "SEO",
+  "Graphics Design",
+  "Elevations",
+  "Social Media Management",
+];
+
 interface Props {
   projects: Project[];
 }
 
 export default function PortfolioGrid({ projects }: Props) {
+  if (projects.length === 0) return <PlaceholderPortfolioGrid />;
+  return <LivePortfolioGrid projects={projects} />;
+}
+
+function PlaceholderPortfolioGrid() {
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filtered = useMemo(
+    () =>
+      activeFilter === "All"
+        ? placeholderProjects
+        : placeholderProjects.filter((p) => p.category === activeFilter),
+    [activeFilter],
+  );
+
+  return (
+    <div>
+      {/* Filter bar */}
+      <div className="flex flex-wrap gap-6" role="group" aria-label="Filter by category">
+        {placeholderCategories.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setActiveFilter(cat)}
+            aria-pressed={activeFilter === cat}
+            className="pb-1 transition-colors duration-200"
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontSize: "0.9rem",
+              color: activeFilter === cat ? "var(--ec-red)" : "var(--ec-ink)",
+              borderBottom:
+                activeFilter === cat
+                  ? "1px solid var(--ec-red)"
+                  : "1px solid transparent",
+            }}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Grid */}
+      <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.map((project, i) => (
+          <Link
+            key={project.title}
+            href="/portfolio"
+            className="group block motion-safe:animate-fade-up"
+            style={{ animationDelay: `${(i % PAGE_SIZE) * 50}ms` }}
+          >
+            <div className="relative aspect-[3/2] overflow-hidden">
+              <div
+                className="ph-card-tile absolute inset-0 flex items-center justify-center"
+                style={{ background: "var(--ec-ink-2)" }}
+              >
+                <span
+                  className="eyebrow"
+                  style={{ color: "var(--ec-on-ink-soft)", letterSpacing: "0.1em" }}
+                >
+                  {project.title}
+                </span>
+              </div>
+              <span
+                className="absolute right-4 top-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontWeight: 600,
+                  fontSize: "0.85rem",
+                  color: "var(--ec-on-ink)",
+                }}
+              >
+                View &rarr;
+              </span>
+            </div>
+            <div className="mt-4 flex items-center gap-3">
+              <span className="eyebrow" style={{ letterSpacing: "0.1em" }}>
+                {project.category}
+              </span>
+              <span className="eyebrow" style={{ letterSpacing: "0.1em" }}>
+                &middot; {project.year}
+              </span>
+            </div>
+            <h3 className="ph-card-title mt-2 text-h3">{project.title}</h3>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LivePortfolioGrid({ projects }: Props) {
   const [activeFilter, setActiveFilter] = useState("All");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [isFiltering, setIsFiltering] = useState(false);

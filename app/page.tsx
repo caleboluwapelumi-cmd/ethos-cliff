@@ -9,21 +9,22 @@ import { getProjects, getDriveImageUrl } from "@/lib/projects";
 
 export const revalidate = 300;
 
+// PLACEHOLDER — replace with real Sheets data when available
 const placeholderWork = [
   {
-    img: "/images/work/placeholder-1.jpg",
-    title: "Brand Identity System",
-    category: "Branding",
+    title: "The Apex Rebrand",
+    category: "Business Branding",
+    year: "2024",
   },
   {
-    img: "/images/work/placeholder-2.jpg",
-    title: "Digital Presence Refresh",
-    category: "Web & SEO",
+    title: "Verve Social Campaign",
+    category: "Social Media Management",
+    year: "2024",
   },
   {
-    img: "/images/work/placeholder-3.jpg",
-    title: "Content & Campaign Design",
-    category: "Social Media",
+    title: "Luminary Personal Brand",
+    category: "Personal Branding",
+    year: "2025",
   },
 ];
 
@@ -105,28 +106,18 @@ export default async function Home() {
         </div>
 
         <div className="container relative" style={{ zIndex: 1 }}>
-          <div className="flex items-start justify-between gap-8">
-            <TextReveal
-              as="h1"
-              className="text-hero"
-              lines={[
-                <span key="l1">Every Great Business</span>,
-                <span key="l2">Starts With a Cliff-Edge</span>,
-                <span key="l3">
-                  Moment
-                  <span style={{ color: "var(--ec-red)" }}>.</span>
-                </span>,
-              ]}
-            />
-            <Link
-              href="/portfolio"
-              aria-label="Explore our work"
-              className="hidden shrink-0 lg:block motion-safe:animate-fade-in"
-              style={{ animationDelay: "500ms" }}
-            >
-              <RotatingBadge text="EXPLORE OUR WORK" />
-            </Link>
-          </div>
+          <TextReveal
+            as="h1"
+            className="text-hero"
+            lines={[
+              <span key="l1">Every Great Business</span>,
+              <span key="l2">Starts With a Cliff-Edge</span>,
+              <span key="l3">
+                Moment
+                <span style={{ color: "var(--ec-red)" }}>.</span>
+              </span>,
+            ]}
+          />
 
           <p
             className="mt-8 text-body motion-safe:animate-fade-up"
@@ -157,6 +148,15 @@ export default async function Home() {
               </Link>
             </Magnetic>
           </div>
+
+          <Link
+            href="/portfolio"
+            aria-label="Explore our work"
+            className="mt-16 inline-flex motion-safe:animate-fade-in"
+            style={{ animationDelay: "500ms" }}
+          >
+            <RotatingBadge text="EXPLORE OUR WORK" />
+          </Link>
         </div>
       </section>
 
@@ -206,7 +206,7 @@ export default async function Home() {
                   alt="Ethos Cliff"
                   fill
                   className="object-contain"
-                  sizes="(min-width: 1024px) 40vw, 90vw"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
@@ -243,19 +243,19 @@ export default async function Home() {
                       className="group relative block h-[60vh] w-full overflow-hidden"
                       style={{ border: "1px solid var(--ec-line)" }}
                     >
-                      <ImageReveal className="h-full w-full">
-                        <Image
-                          src={
-                            project.coverImageId
-                              ? getDriveImageUrl(project.coverImageId)
-                              : placeholderWork[i % placeholderWork.length].img
-                          }
-                          alt={project.title}
-                          fill
-                          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                          unoptimized={Boolean(project.coverImageId)}
-                        />
-                      </ImageReveal>
+                      {project.coverImageId ? (
+                        <ImageReveal className="h-full w-full">
+                          <Image
+                            src={getDriveImageUrl(project.coverImageId)}
+                            alt={project.title}
+                            fill
+                            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                            unoptimized
+                          />
+                        </ImageReveal>
+                      ) : (
+                        <div className="h-full w-full" style={{ background: "var(--ec-ink-2)" }} />
+                      )}
 
                       {/* Bottom-left title/category scrim */}
                       <div
@@ -294,23 +294,15 @@ export default async function Home() {
                 ))
               : placeholderWork.map((item, i) => (
                   <ScrollReveal key={item.title} delay={i * 60}>
-                    <div
+                    <Link
+                      href="/portfolio"
                       className="group relative block h-[60vh] w-full overflow-hidden"
                       style={{ border: "1px solid var(--ec-line)" }}
                     >
-                      <ImageReveal className="h-full w-full">
-                        <Image
-                          src={item.img}
-                          alt={item.title}
-                          fill
-                          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                        />
-                      </ImageReveal>
+                      <div className="h-full w-full" style={{ background: "var(--ec-ink-2)" }} />
 
-                      <div
-                        className="absolute inset-x-0 bottom-0 p-8"
-                        style={{ background: "rgba(18,17,16,0.6)" }}
-                      >
+                      {/* Bottom-left title/category */}
+                      <div className="absolute inset-x-0 bottom-0 p-8">
                         <span className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
                           {item.category}
                         </span>
@@ -318,7 +310,20 @@ export default async function Home() {
                           {item.title}
                         </h3>
                       </div>
-                    </div>
+
+                      {/* Hover — View Project */}
+                      <span
+                        className="absolute right-6 top-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        style={{
+                          fontFamily: "var(--font-sans)",
+                          fontWeight: 600,
+                          fontSize: "0.9rem",
+                          color: "var(--ec-red)",
+                        }}
+                      >
+                        View Project &rarr;
+                      </span>
+                    </Link>
                   </ScrollReveal>
                 ))}
           </div>

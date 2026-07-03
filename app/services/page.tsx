@@ -109,7 +109,7 @@ export default function ServicesPage() {
       <section
         data-cursor-surface="ink"
         className="section"
-        style={{ background: "var(--ec-ink)" }}
+        style={{ background: "var(--ec-red)" }}
       >
         <ScrollReveal>
           <div className="container text-center">
@@ -126,12 +126,11 @@ export default function ServicesPage() {
                 lineHeight: 1.6,
               }}
             >
-              Book a free consultation and let&rsquo;s map out what&rsquo;s
-              possible for your brand.
+              Let&rsquo;s build a brand the world will remember.
             </p>
             <div className="mt-10 flex justify-center">
               <Magnetic>
-                <Link href="/contact" className="btn-invert">
+                <Link href="/contact" className="btn-invert-red">
                   Book a Free Consultation
                 </Link>
               </Magnetic>
