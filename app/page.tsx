@@ -104,27 +104,6 @@ export default async function Home() {
           />
         </div>
 
-        <div
-          className="pointer-events-none absolute left-1/2 top-1/2 motion-safe:animate-logo-in-06"
-          style={{
-            transform: "translate(-50%, -50%)",
-            width: "min(1100px, 85vw)",
-            height: "75vh",
-            zIndex: 0,
-            opacity: 0.06,
-            animationDelay: "200ms",
-          }}
-          aria-hidden="true"
-        >
-          <Image
-            src="/images/logo.PNG"
-            alt=""
-            fill
-            priority
-            style={{ objectFit: "contain" }}
-          />
-        </div>
-
         <div className="container relative" style={{ zIndex: 1 }}>
           <div className="flex items-start justify-between gap-8">
             <TextReveal
@@ -143,7 +122,7 @@ export default async function Home() {
               href="/portfolio"
               aria-label="Explore our work"
               className="hidden shrink-0 lg:block motion-safe:animate-fade-in"
-              style={{ animationDelay: "1000ms" }}
+              style={{ animationDelay: "500ms" }}
             >
               <RotatingBadge text="EXPLORE OUR WORK" />
             </Link>
@@ -155,7 +134,7 @@ export default async function Home() {
               maxWidth: "48ch",
               fontSize: "1.1rem",
               color: "#3a3a3a",
-              animationDelay: "750ms",
+              animationDelay: "300ms",
             }}
           >
             That moment when you looked out and said &mdash; &ldquo;I&rsquo;m
@@ -165,7 +144,7 @@ export default async function Home() {
 
           <div
             className="mt-10 flex flex-wrap items-center gap-4 motion-safe:animate-fade-up"
-            style={{ animationDelay: "900ms" }}
+            style={{ animationDelay: "380ms" }}
           >
             <Magnetic>
               <Link href="/contact" className="btn-primary">

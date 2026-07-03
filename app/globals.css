@@ -101,33 +101,7 @@ body::before {
   }
 }
 
-/* ── Hero logo watermark fade-in ── */
-@keyframes logo-watermark-in-06 {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.06;
-  }
-}
-
-@utility animate-logo-in-06 {
-  animation: logo-watermark-in-06 1200ms ease-out both;
-}
-
-@keyframes logo-watermark-in-05 {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 0.05;
-  }
-}
-
-@utility animate-logo-in-05 {
-  animation: logo-watermark-in-05 1200ms ease-out both;
-}
-
+/* ── Hero logo watermark fade-in (About page only) ── */
 @keyframes logo-watermark-in-12 {
   from {
     opacity: 0;
@@ -142,8 +116,6 @@ body::before {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-logo-in-06,
-  .animate-logo-in-05,
   .animate-logo-in-12 {
     animation: none;
   }
