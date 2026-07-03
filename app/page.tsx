@@ -5,6 +5,7 @@ import TextReveal from "@/components/TextReveal";
 import RotatingBadge from "@/components/RotatingBadge";
 import Magnetic from "@/components/Magnetic";
 import ImageReveal from "@/components/ImageReveal";
+import BtnArrow from "@/components/BtnArrow";
 import { getProjects, getDriveImageUrl } from "@/lib/projects";
 
 export const revalidate = 300;
@@ -140,6 +141,7 @@ export default async function Home() {
             <Magnetic>
               <Link href="/contact" className="btn-primary">
                 Let&rsquo;s Build It Together
+                <BtnArrow />
               </Link>
             </Magnetic>
             <Magnetic>
@@ -437,6 +439,7 @@ export default async function Home() {
               <Magnetic>
                 <Link href="/contact" className="btn-invert">
                   Consult with Me
+                  <BtnArrow />
                 </Link>
               </Magnetic>
             </div>

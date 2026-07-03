@@ -4,6 +4,7 @@ import ServicesList from "@/components/ServicesList";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import TextReveal from "@/components/TextReveal";
 import Magnetic from "@/components/Magnetic";
+import BtnArrow from "@/components/BtnArrow";
 
 export const metadata = {
   title: "Services — Ethos Cliff",
@@ -138,6 +139,7 @@ export default function ServicesPage() {
               <Magnetic>
                 <Link href="/contact" className="btn-invert-red">
                   Book a Free Consultation
+                  <BtnArrow />
                 </Link>
               </Magnetic>
             </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Magnetic from "@/components/Magnetic";
+import BtnArrow from "@/components/BtnArrow";
 
 type Step = 1 | 2 | 3;
 
@@ -355,7 +356,8 @@ export default function ContactForm({ step, onStepChange }: Props) {
               className="btn-primary"
               style={{ paddingInline: "2.5rem" }}
             >
-              {step < 3 ? "Continue →" : "Send Enquiry"}
+              {step < 3 ? "Continue" : "Send Enquiry"}
+              <BtnArrow />
             </button>
           </Magnetic>
         </div>

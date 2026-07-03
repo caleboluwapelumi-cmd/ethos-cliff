@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import StatsCounter from "@/components/StatsCounter";
 import TextReveal from "@/components/TextReveal";
 import Magnetic from "@/components/Magnetic";
+import BtnArrow from "@/components/BtnArrow";
 
 export const metadata = {
   title: "About — Ethos Cliff",
@@ -356,6 +357,7 @@ export default function AboutPage() {
               <Magnetic>
                 <Link href="/contact" className="btn-primary">
                   Book a Free Consultation
+                  <BtnArrow />
                 </Link>
               </Magnetic>
             </div>
