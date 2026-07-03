@@ -16,41 +16,16 @@ const navLinks = [
 
 export default function Nav() {
   const pathname = usePathname();
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [heroIsDark, setHeroIsDark] = useState(false);
-  const [heroHeight, setHeroHeight] = useState<number | null>(null);
-  const [pastHero, setPastHero] = useState(false);
 
-  // Nav stays pinned only while the page's hero (first section) is in view.
+  // Nav lives at the top of the page's hero (first section), scrolling away with it.
   useEffect(() => {
     const heroEl = document.querySelector<HTMLElement>("main > :first-child");
     setHeroIsDark(heroEl?.getAttribute("data-cursor-surface") === "ink");
-
-    if (!heroEl) {
-      setHeroHeight(0);
-      return;
-    }
-
-    const measure = () => setHeroHeight(heroEl.getBoundingClientRect().height);
-    measure();
-
-    const ro = new ResizeObserver(measure);
-    ro.observe(heroEl);
-    return () => ro.disconnect();
   }, [pathname]);
 
-  useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 80);
-      if (heroHeight !== null) setPastHero(window.scrollY > heroHeight);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [heroHeight]);
-
-  const showInverted = heroIsDark && !scrolled;
+  const showInverted = heroIsDark;
 
   useEffect(() => {
     setMenuOpen(false);
@@ -70,18 +45,11 @@ export default function Nav() {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50"
+      className="absolute inset-x-0 top-0 z-50"
       style={{
         height: "64px",
-        background: scrolled ? "var(--ec-paper)" : "transparent",
-        borderBottom: scrolled
-          ? "1px solid var(--ec-line)"
-          : "1px solid transparent",
-        opacity: pastHero ? 0 : 1,
-        visibility: pastHero ? "hidden" : "visible",
-        pointerEvents: pastHero ? "none" : "auto",
-        transition:
-          "opacity 0.3s ease, background-color 0.3s ease, border-color 0.3s ease",
+        background: "transparent",
+        borderBottom: "1px solid transparent",
       }}
     >
       <nav

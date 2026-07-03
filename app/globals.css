@@ -745,6 +745,25 @@ noscript .curtain {
   color: var(--ec-on-ink);
 }
 
+.footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--ec-line-on-ink);
+  color: var(--ec-on-ink-soft);
+  transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease, transform 200ms ease;
+}
+
+.footer-social-icon:hover {
+  color: var(--ec-on-ink);
+  border-color: var(--ec-red);
+  background: var(--ec-red);
+  transform: translateY(-2px);
+}
+
 .text-link {
   font-family: var(--font-sans);
   font-size: 0.85rem;

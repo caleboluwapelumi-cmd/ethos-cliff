@@ -25,7 +25,7 @@ export default function AboutPage() {
       {/* ─────────── Hero ─────────── */}
       <section
         data-cursor-surface="ink"
-        className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden pt-24 sm:pt-28"
+        className="relative flex min-h-screen flex-col justify-center overflow-hidden pt-24 sm:pt-28"
         style={{ background: "var(--ec-ink-gradient)" }}
       >
         <div
@@ -212,47 +212,80 @@ export default function AboutPage() {
             <h2 className="mt-5 text-h2">A Few Things We Hold True.</h2>
           </ScrollReveal>
 
-          <div className="mt-16">
+          <div className="relative mt-20" style={{ paddingBottom: "2rem" }}>
             <ScrollReveal>
               <p
+                aria-hidden="true"
+                className="hidden select-none sm:block"
+                style={{
+                  position: "absolute",
+                  top: "-3.5rem",
+                  left: "-1rem",
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 700,
+                  fontSize: "clamp(6rem, 12vw, 11rem)",
+                  lineHeight: 1,
+                  color: "var(--ec-ink)",
+                  opacity: 0.06,
+                  zIndex: 0,
+                }}
+              >
+                &ldquo;
+              </p>
+            </ScrollReveal>
+
+            {/* Quote 1 — large, left */}
+            <ScrollReveal>
+              <p
+                className="relative"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
                   color: "var(--ec-ink)",
-                  fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
-                  lineHeight: 1.25,
-                  paddingBlock: "2rem",
+                  fontSize: "clamp(1.9rem, 4vw, 3.4rem)",
+                  lineHeight: 1.2,
+                  maxWidth: "17ch",
+                  zIndex: 1,
                 }}
               >
                 &ldquo;Brand is not decoration. It&rsquo;s communication.&rdquo;
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={80}>
+            {/* Quote 2 — smaller, right-shifted, red accent */}
+            <ScrollReveal delay={100}>
               <p
+                className="relative"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
-                  color: "var(--ec-ink-soft)",
-                  fontSize: "clamp(1.35rem, 2.5vw, 2rem)",
+                  color: "var(--ec-red)",
+                  fontSize: "clamp(1.2rem, 2.2vw, 1.85rem)",
                   lineHeight: 1.3,
-                  paddingBlock: "2rem",
-                  marginLeft: "18%",
+                  maxWidth: "22ch",
+                  marginTop: "clamp(1.75rem, 4vw, 3rem)",
+                  marginLeft: "auto",
+                  marginRight: "clamp(0px, 6vw, 4rem)",
+                  textAlign: "right",
                 }}
               >
                 &ldquo;Visibility without strategy is just noise.&rdquo;
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={160}>
+            {/* Quote 3 — large, indented center, staggered down */}
+            <ScrollReveal delay={200}>
               <p
+                className="relative"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 700,
-                  color: "var(--ec-ink)",
-                  fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
-                  lineHeight: 1.25,
-                  paddingBlock: "2rem",
+                  color: "var(--ec-ink-soft)",
+                  fontSize: "clamp(1.7rem, 3.4vw, 2.9rem)",
+                  lineHeight: 1.22,
+                  maxWidth: "20ch",
+                  marginTop: "clamp(2.5rem, 6vw, 4.5rem)",
+                  marginLeft: "clamp(0px, 10vw, 7rem)",
                 }}
               >
                 &ldquo;The right story, told right, changes everything.&rdquo;
