@@ -25,7 +25,7 @@ export default function AboutPage() {
       <section
         data-cursor-surface="ink"
         className="relative flex min-h-[70vh] flex-col justify-center overflow-hidden pt-24 sm:pt-28"
-        style={{ background: "var(--ec-ink)" }}
+        style={{ background: "var(--ec-ink-gradient)" }}
       >
         <div
           className="pointer-events-none absolute left-1/2 top-1/2 motion-safe:animate-logo-in-12"
@@ -125,7 +125,7 @@ export default function AboutPage() {
       <section
         data-cursor-surface="ink"
         className="section divider"
-        style={{ background: "var(--ec-ink)" }}
+        style={{ background: "var(--ec-ink-gradient)" }}
       >
         <div className="container">
           <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:items-center">

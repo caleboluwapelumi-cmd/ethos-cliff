@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  /* Parent surface — off-white paper */
-  --ec-paper: #f7f2e7;
-  --ec-paper-deep: #efe8d8;
-  --ec-paper-raised: #fffdf8;
+  /* Parent surface — pure white */
+  --ec-paper: #ffffff;
+  --ec-paper-deep: #f2f2f2;
+  --ec-paper-raised: #ffffff;
 
   /* Secondary — ink black */
   --ec-ink: #121110;
@@ -12,23 +12,29 @@
   --ec-ink-soft: #55514a;
   --ec-ink-faint: #8d8878;
 
-  /* Secondary — maroon */
-  --ec-red: #800000;
-  --ec-red-hover: #5c0000;
+  /* Secondary — red */
+  --ec-red: #e60023;
+  --ec-red-hover: #b3001c;
 
   /* Hairlines */
-  --ec-line: #ddd5c1;
-  --ec-line-strong: #c9bea4;
-  --ec-line-on-ink: rgba(247, 242, 231, 0.16);
+  --ec-line: #e6e6e6;
+  --ec-line-strong: #d0d0d0;
+  --ec-line-on-ink: rgba(255, 255, 255, 0.14);
 
   /* Text/foreground when sitting on an ink (black) surface */
-  --ec-on-ink: #f7f2e7;
-  --ec-on-ink-soft: rgba(247, 242, 231, 0.62);
+  --ec-on-ink: #ffffff;
+  --ec-on-ink-soft: rgba(255, 255, 255, 0.64);
+
+  /* Cinematic black gradient — soft satin sheen, for full dark surfaces */
+  --ec-ink-gradient:
+    radial-gradient(130% 100% at 18% -12%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 42%),
+    radial-gradient(90% 70% at 88% 108%, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0) 55%),
+    linear-gradient(160deg, #201d19 0%, #0d0b09 42%, #000000 100%);
 }
 
 @theme inline {
-  --font-display: var(--font-rubik);
-  --font-sans: var(--font-montserrat);
+  --font-display: var(--font-lemon-milk-bold);
+  --font-sans: var(--font-lemon-milk-light);
 
   --color-ec-paper: var(--ec-paper);
   --color-ec-paper-deep: var(--ec-paper-deep);
@@ -148,7 +154,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: 300;
-  background: var(--ec-ink);
+  background: var(--ec-ink-gradient);
   transform: scaleY(1);
   transform-origin: top;
   pointer-events: none;
@@ -285,7 +291,7 @@ noscript .curtain {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: var(--ec-ink);
+  background: var(--ec-ink-gradient);
   transform-origin: right;
   transform: scaleX(1);
   transition: transform 900ms cubic-bezier(0.76, 0, 0.24, 1);
@@ -326,7 +332,7 @@ noscript .curtain {
   font-family: var(--font-display);
   font-size: clamp(2.5rem, 5vw, 5rem);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   font-weight: 700;
   color: var(--ec-ink);
 }
@@ -335,7 +341,7 @@ noscript .curtain {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 4rem);
   line-height: 1;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   font-weight: 700;
   color: var(--ec-ink);
 }
@@ -344,7 +350,7 @@ noscript .curtain {
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 2vw, 1.75rem);
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
   font-weight: 700;
   color: var(--ec-ink);
 }
@@ -359,8 +365,8 @@ noscript .curtain {
 
 .eyebrow {
   font-family: var(--font-sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--ec-ink-faint);
 }
@@ -795,7 +801,7 @@ noscript .curtain {
 .text-reveal-line {
   display: block;
   transform: translateY(100%);
-  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1050ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .text-reveal-line.is-visible {
@@ -962,7 +968,7 @@ noscript .curtain {
   font-weight: 700;
   font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: var(--ec-ink);
   transition: color 250ms ease;
 }
@@ -1087,14 +1093,15 @@ noscript .curtain {
 }
 
 .favicon-placeholder--ink {
-  background-color: var(--ec-ink);
-  background-image: repeating-linear-gradient(
-    135deg,
-    var(--ec-line-on-ink) 0,
-    var(--ec-line-on-ink) 1px,
-    transparent 1px,
-    transparent 14px
-  );
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      var(--ec-line-on-ink) 0,
+      var(--ec-line-on-ink) 1px,
+      transparent 1px,
+      transparent 14px
+    ),
+    var(--ec-ink-gradient);
 }
 
 .favicon-placeholder-mark {

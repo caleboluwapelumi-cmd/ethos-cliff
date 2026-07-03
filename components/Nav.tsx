@@ -160,7 +160,7 @@ export default function Nav() {
           id="mobile-menu"
           data-cursor-surface="ink"
           className="fixed inset-0 z-50 flex flex-col items-center justify-center md:hidden"
-          style={{ background: "var(--ec-ink)" }}
+          style={{ background: "var(--ec-ink-gradient)" }}
         >
           <button
             type="button"

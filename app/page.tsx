@@ -411,7 +411,7 @@ export default async function Home() {
       <section
         data-cursor-surface="ink"
         className="section"
-        style={{ background: "var(--ec-ink)" }}
+        style={{ background: "var(--ec-ink-gradient)" }}
       >
         <ScrollReveal>
           <div className="container text-center">

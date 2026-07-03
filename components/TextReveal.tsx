@@ -52,7 +52,7 @@ export default function TextReveal({
         <span className="text-reveal-wrap" key={i}>
           <span
             className={`text-reveal-line${visible ? " is-visible" : ""}`}
-            style={{ transitionDelay: `${i * 80}ms` }}
+            style={{ transitionDelay: `${i * 140}ms` }}
           >
             {line}
           </span>

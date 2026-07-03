@@ -16,7 +16,7 @@ export default function Footer() {
     <footer
       data-cursor-surface="ink"
       style={{
-        background: "var(--ec-ink)",
+        background: "var(--ec-ink-gradient)",
         borderTop: "1px solid var(--ec-line-on-ink)",
       }}
     >

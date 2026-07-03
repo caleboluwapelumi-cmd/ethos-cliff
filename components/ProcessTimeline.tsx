@@ -57,8 +57,8 @@ export default function ProcessTimeline() {
       <div
         className="absolute top-6 hidden lg:block"
         style={{
-          left: "12.5%",
-          right: "12.5%",
+          left: "0%",
+          right: "0%",
           height: "1px",
           background: "var(--ec-line)",
         }}

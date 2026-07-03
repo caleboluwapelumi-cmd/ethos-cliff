@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
-import { Rubik, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import CustomCursor from "@/components/CustomCursor";
 
-const rubik = Rubik({
-  variable: "--font-rubik",
-  subsets: ["latin"],
-  weight: ["700"],
+const lemonMilkBold = localFont({
+  src: "../public/fonts/lemon-milk/LemonMilkbold.otf",
+  variable: "--font-lemon-milk-bold",
+  weight: "700",
+  display: "swap",
 });
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+const lemonMilkLight = localFont({
+  src: "../public/fonts/lemon-milk/LemonMilklight.otf",
+  variable: "--font-lemon-milk-light",
+  weight: "300",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${rubik.variable} ${montserrat.variable} h-full antialiased`}
+      className={`${lemonMilkBold.variable} ${lemonMilkLight.variable} h-full antialiased`}
     >
       <head>
         <link rel="icon" href="/favicon.png" />
