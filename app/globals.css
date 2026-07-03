@@ -809,47 +809,6 @@ noscript .curtain {
   }
 }
 
-.accordion-row {
-  border-bottom: 1px solid var(--ec-line);
-  border-left: 2px solid transparent;
-  padding: 1.75rem 0 1.75rem 1rem;
-  margin-left: -1rem;
-  transition:
-    border-color 200ms ease,
-    background-color 200ms ease;
-}
-
-.accordion-row.is-open {
-  border-left-color: var(--ec-red);
-  background: var(--ec-paper-deep);
-}
-
-.accordion-chevron {
-  flex-shrink: 0;
-  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.accordion-chevron.is-open {
-  transform: rotate(180deg);
-}
-
-/* ── Accordion (services page) ── */
-.accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 400ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.accordion-body.is-open {
-  max-height: 600px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .accordion-body {
-    transition: none;
-  }
-}
-
 /* ── Process timeline draw line ── */
 .timeline-line {
   width: 0;
@@ -883,6 +842,229 @@ noscript .curtain {
 
 .group:hover .ph-card-title {
   color: var(--ec-ink);
+}
+
+/* ── Contact page — step progress sidebar ── */
+.step-sidebar-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--ec-line);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--ec-ink-faint);
+  transition:
+    color 200ms ease,
+    border-color 200ms ease,
+    background-color 200ms ease;
+}
+
+.step-sidebar-num--active {
+  color: var(--ec-red);
+  border-color: var(--ec-red);
+}
+
+.step-sidebar-num--done {
+  color: var(--ec-on-ink);
+  border-color: var(--ec-ink);
+  background: var(--ec-ink);
+}
+
+.step-sidebar-label {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--ec-ink-faint);
+  font-weight: 400;
+  transition:
+    color 200ms ease,
+    font-weight 200ms ease;
+}
+
+.step-sidebar-label--active {
+  color: var(--ec-red);
+  font-weight: 700;
+}
+
+.step-sidebar-label--done {
+  color: var(--ec-ink);
+}
+
+/* ── Contact form — service pill buttons ── */
+.pill-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid var(--ec-line-strong);
+  background: transparent;
+  color: var(--ec-ink-soft);
+  padding: 0.6rem 1.1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+
+.pill-button:hover {
+  border-color: var(--ec-ink);
+  color: var(--ec-ink);
+}
+
+.pill-button.is-active {
+  background: var(--ec-red);
+  border-color: var(--ec-red);
+  color: var(--ec-on-ink);
+}
+
+.pill-button:focus-visible {
+  outline: 2px solid var(--ec-ink);
+  outline-offset: 2px;
+}
+
+/* ── Services page — editorial hover rows ── */
+.svc-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 40%) minmax(0, 1fr) auto;
+  align-items: start;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: clamp(2rem, 4vw, 3rem) 0 clamp(2rem, 4vw, 3rem) 1.25rem;
+  margin-left: -1.25rem;
+  border-bottom: 1px solid var(--ec-line);
+  border-left: 3px solid transparent;
+  transition:
+    background-color 250ms ease,
+    border-color 250ms ease;
+}
+
+.svc-row:hover {
+  background: var(--ec-paper-deep);
+  border-left-color: var(--ec-red);
+}
+
+.svc-row-num {
+  padding-top: 0.35rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.7rem, 1vw, 0.9rem);
+  color: var(--ec-ink-faint);
+}
+
+.svc-row-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ec-ink);
+  transition: color 250ms ease;
+}
+
+.svc-row:hover .svc-row-name {
+  color: var(--ec-red);
+}
+
+.svc-row-hook {
+  margin-top: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--ec-ink-faint);
+}
+
+.svc-row-body {
+  justify-self: start;
+  max-width: 52ch;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ec-ink-soft);
+  padding-top: 0.35rem;
+}
+
+.svc-row--even .svc-row-body {
+  justify-self: end;
+  max-width: 42ch;
+}
+
+.svc-row-arrow {
+  align-self: center;
+  font-family: var(--font-sans);
+  color: var(--ec-ink-faint);
+  transition:
+    color 250ms ease,
+    transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.svc-row:hover .svc-row-arrow {
+  color: var(--ec-red);
+  transform: translateX(6px);
+}
+
+@media (max-width: 1023.98px) {
+  .svc-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .svc-row-body,
+  .svc-row--even .svc-row-body {
+    justify-self: start;
+    max-width: none;
+  }
+
+  .svc-row-arrow {
+    justify-self: end;
+  }
+}
+
+/* ── Decorative oversized background numerals/marks ── */
+.hero-decorative-number {
+  position: absolute;
+  right: clamp(1rem, 4vw, 3rem);
+  bottom: clamp(-2rem, -3vw, -0.5rem);
+  z-index: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(4rem, 10vw, 12rem);
+  line-height: 1;
+  color: var(--ec-red);
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cta-decorative-arrow {
+  position: absolute;
+  top: 50%;
+  right: clamp(-1rem, -3vw, 2rem);
+  z-index: 0;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(6rem, 15vw, 15rem);
+  line-height: 1;
+  color: var(--ec-on-ink);
+  opacity: 0.08;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill-button,
+  .svc-row,
+  .svc-row-name,
+  .svc-row-arrow,
+  .step-sidebar-num,
+  .step-sidebar-label {
+    transition: none;
+  }
 }
 
 /* ── Favicon-based image placeholders ── */

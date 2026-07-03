@@ -1,6 +1,6 @@
 import Link from "next/link";
 import ScrollReveal from "@/components/ScrollReveal";
-import ServicesAccordion from "@/components/ServicesAccordion";
+import ServicesList from "@/components/ServicesList";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import TextReveal from "@/components/TextReveal";
 import Magnetic from "@/components/Magnetic";
@@ -60,14 +60,17 @@ export default function ServicesPage() {
   return (
     <main>
       {/* ─────────── Hero ─────────── */}
-      <section className="flex min-h-[50vh] flex-col justify-center pt-24 sm:pt-28">
-        <div className="container">
+      <section className="relative flex min-h-[60vh] flex-col justify-center overflow-hidden pt-24 sm:pt-28">
+        <span className="hero-decorative-number" aria-hidden="true">
+          01&mdash;07
+        </span>
+        <div className="container relative" style={{ zIndex: 1 }}>
           <p className="eyebrow motion-safe:animate-fade-up">The Arsenal</p>
           <div className="mt-4">
             <TextReveal
               as="h1"
               className="text-hero"
-              style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)" }}
+              style={{ fontSize: "clamp(3rem, 6vw, 6rem)" }}
               lines={[
                 <span key="l1">Here&rsquo;s What Happens</span>,
                 <span key="l2">When You Work With Us.</span>,
@@ -86,10 +89,10 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ─────────── Services accordion ─────────── */}
+      {/* ─────────── Services list ─────────── */}
       <section className="section-sm divider">
         <div className="container">
-          <ServicesAccordion services={services} />
+          <ServicesList services={services} />
         </div>
       </section>
 
@@ -108,11 +111,14 @@ export default function ServicesPage() {
       {/* ─────────── CTA band ─────────── */}
       <section
         data-cursor-surface="ink"
-        className="section"
+        className="section relative overflow-hidden"
         style={{ background: "var(--ec-red)" }}
       >
+        <span className="cta-decorative-arrow" aria-hidden="true">
+          &rarr;
+        </span>
         <ScrollReveal>
-          <div className="container text-center">
+          <div className="container relative text-center" style={{ zIndex: 1 }}>
             <h2 className="text-h2" style={{ color: "var(--ec-on-ink)" }}>
               Ready to get started?
             </h2>

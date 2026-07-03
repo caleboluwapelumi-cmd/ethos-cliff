@@ -74,27 +74,34 @@ export default function ProcessTimeline() {
         {steps.map(({ n, name, desc }) => (
           <div
             key={n}
-            className="flex flex-col items-center text-center lg:items-start lg:text-left"
+            className="relative flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             <span
               aria-hidden="true"
-              className="block"
+              className="absolute"
               style={{
+                top: 0,
+                left: 0,
+                zIndex: 0,
                 fontFamily: "var(--font-display)",
                 fontWeight: 700,
                 fontSize: "clamp(3rem, 5vw, 5rem)",
                 color: "var(--ec-red)",
                 opacity: 0.15,
                 lineHeight: 1,
-                marginBottom: "-1.25rem",
               }}
             >
               {n}
             </span>
-            <h3 className="relative text-h3">{name}</h3>
-            <p className="mt-2 text-body" style={{ maxWidth: "24ch" }}>
-              {desc}
-            </p>
+            <div
+              className="relative flex flex-col items-center lg:items-start"
+              style={{ zIndex: 1, marginTop: "clamp(1.75rem, 2.5vw, 2.75rem)" }}
+            >
+              <h3 className="text-h3">{name}</h3>
+              <p className="mt-2 text-body" style={{ maxWidth: "24ch" }}>
+                {desc}
+              </p>
+            </div>
           </div>
         ))}
       </div>
