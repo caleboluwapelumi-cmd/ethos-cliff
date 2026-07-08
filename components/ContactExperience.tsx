@@ -3,6 +3,7 @@
 import { useState } from "react";
 import TextReveal from "@/components/TextReveal";
 import ContactForm from "@/components/ContactForm";
+import SocialLinks from "@/components/SocialLinks";
 
 type Step = 1 | 2 | 3;
 
@@ -11,8 +12,6 @@ const STEPS: { n: Step; label: string }[] = [
   { n: 2, label: "The Project" },
   { n: 3, label: "Logistics" },
 ];
-
-const directLinks = ["Email", "Instagram", "LinkedIn", "WhatsApp"];
 
 export default function ContactExperience() {
   const [step, setStep] = useState<Step>(1);
@@ -93,18 +92,9 @@ export default function ContactExperience() {
         {/* Direct contact */}
         <div className="mt-12">
           <p className="eyebrow">Or connect directly</p>
-          <ul className="mt-6 flex flex-col gap-3" role="list">
-            {directLinks.map((label) => (
-              <li key={label}>
-                <span
-                  className="text-link"
-                  style={{ cursor: "default", fontSize: "0.95rem" }}
-                >
-                  &rarr; {label}
-                </span>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-6">
+            <SocialLinks color="var(--ec-ink-soft)" />
+          </div>
         </div>
       </div>
 

@@ -745,6 +745,16 @@ noscript .curtain {
   color: var(--ec-on-ink);
 }
 
+.social-link-icon {
+  display: inline-flex;
+  color: inherit;
+  transition: color 200ms ease;
+}
+
+.social-link-icon:hover {
+  color: var(--ec-red);
+}
+
 .footer-social-icon {
   display: flex;
   align-items: center;
@@ -971,30 +981,6 @@ noscript .curtain {
 
 .group:hover .ph-card-title {
   color: var(--ec-ink);
-}
-
-/* ── Portfolio hero — animated background typography ── */
-@keyframes hero-drift {
-  0% {
-    transform: translateX(-2%);
-  }
-  100% {
-    transform: translateX(2%);
-  }
-}
-
-.hero-drift-text {
-  animation-name: hero-drift;
-  animation-duration: var(--drift-duration, 10s);
-  animation-timing-function: ease-in-out;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-drift-text {
-    animation: none;
-  }
 }
 
 /* ── Contact page — step progress sidebar ── */

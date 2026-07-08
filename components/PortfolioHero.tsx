@@ -11,16 +11,6 @@ const SLIDES = [
   "/images/POTFOLIO KIT/medsafe/Full Face MedSafe.png",
 ];
 
-const DRIFT_STRINGS: { text: string; top: string; left: string; duration: number }[] = [
-  { text: "ATINUDA", top: "6%", left: "-6%", duration: 11 },
-  { text: "ETANTOS NATURALS", top: "22%", left: "28%", duration: 9 },
-  { text: "RINA", top: "40%", left: "-10%", duration: 12.5 },
-  { text: "MEDSAFE", top: "55%", left: "38%", duration: 8.5 },
-  { text: "GLOBERSHAPERS", top: "70%", left: "-8%", duration: 10.5 },
-  { text: "WEDDING", top: "84%", left: "22%", duration: 9.5 },
-  { text: "COTHING", top: "12%", left: "60%", duration: 11.5 },
-];
-
 export default function PortfolioHero() {
   const [active, setActive] = useState(0);
 
@@ -38,33 +28,6 @@ export default function PortfolioHero() {
       className="relative flex overflow-hidden pt-24 sm:pt-20"
       style={{ minHeight: "90vh", background: "var(--ec-ink)" }}
     >
-      {/* Background layer — drifting client-name typography */}
-      <div className="pointer-events-none absolute inset-0" style={{ zIndex: 0 }} aria-hidden="true">
-        {DRIFT_STRINGS.map((s) => (
-          <span
-            key={s.text}
-            className="hero-drift-text absolute"
-            style={
-              {
-                top: s.top,
-                left: s.left,
-                fontFamily: "var(--font-display)",
-                fontSize: "clamp(5rem, 15vw, 14rem)",
-                fontWeight: 700,
-                color: "#ffffff",
-                opacity: 0.06,
-                textTransform: "uppercase",
-                whiteSpace: "nowrap",
-                lineHeight: 1,
-                "--drift-duration": `${s.duration}s`,
-              } as React.CSSProperties
-            }
-          >
-            {s.text}
-          </span>
-        ))}
-      </div>
-
       {/* Slideshow layer */}
       <div className="pointer-events-none absolute inset-0" style={{ zIndex: 0 }} aria-hidden="true">
         {SLIDES.map((src, i) => (
@@ -72,7 +35,7 @@ export default function PortfolioHero() {
             key={src}
             className="absolute inset-0 transition-opacity"
             style={{
-              opacity: i === active ? 0.25 : 0,
+              opacity: i === active ? 0.7 : 0,
               transitionDuration: "400ms",
               transitionTimingFunction: "ease",
             }}
@@ -96,7 +59,7 @@ export default function PortfolioHero() {
         style={{
           zIndex: 1,
           background:
-            "linear-gradient(135deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.4) 100%)",
+            "linear-gradient(135deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.15) 100%)",
         }}
         aria-hidden="true"
       />

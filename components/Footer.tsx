@@ -1,5 +1,6 @@
 import Link from "next/link";
 import WordMark from "@/components/WordMark";
+import SocialLinks from "@/components/SocialLinks";
 
 const footerLinks = [
   { href: "/", label: "Home" },
@@ -7,12 +8,6 @@ const footerLinks = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },
-];
-
-const socialLinks = [
-  { label: "Email", href: "mailto:#" },
-  { label: "Instagram", href: "#" },
-  { label: "LinkedIn", href: "#" },
 ];
 
 export default function Footer() {
@@ -71,12 +66,8 @@ export default function Footer() {
             <p className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
               Contact
             </p>
-            <div className="mt-4 flex items-center gap-4" role="list">
-              {socialLinks.map(({ label, href }) => (
-                <a key={label} href={href} className="footer-link">
-                  {label}
-                </a>
-              ))}
+            <div className="mt-4">
+              <SocialLinks />
             </div>
           </div>
         </div>
