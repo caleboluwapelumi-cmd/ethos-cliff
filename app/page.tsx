@@ -6,27 +6,12 @@ import RotatingBadge from "@/components/RotatingBadge";
 import Magnetic from "@/components/Magnetic";
 import ImageReveal from "@/components/ImageReveal";
 import BtnArrow from "@/components/BtnArrow";
-import { getProjects, getDriveImageUrl } from "@/lib/projects";
+import { PROJECTS } from "@/lib/portfolio-data";
 
-export const revalidate = 300;
-
-// PLACEHOLDER — replace with real Sheets data when available
-const placeholderWork = [
-  {
-    title: "The Apex Rebrand",
-    category: "Business Branding",
-    year: "2024",
-  },
-  {
-    title: "Verve Social Campaign",
-    category: "Social Media Management",
-    year: "2024",
-  },
-  {
-    title: "Luminary Personal Brand",
-    category: "Personal Branding",
-    year: "2025",
-  },
+const featuredSlugs = [
+  "atinuda-brand-identity",
+  "etantos-hair-brand",
+  "rina-luxury-brand",
 ];
 
 const services = [
@@ -74,9 +59,10 @@ const services = [
   },
 ] as const;
 
-export default async function Home() {
-  const allProjects = await getProjects();
-  const featured = allProjects.filter((p) => p.featured).slice(0, 3);
+export default function Home() {
+  const featured = featuredSlugs
+    .map((slug) => PROJECTS.find((p) => p.slug === slug))
+    .filter((p): p is (typeof PROJECTS)[number] => Boolean(p));
 
   return (
     <main>
@@ -237,97 +223,56 @@ export default async function Home() {
           </ScrollReveal>
 
           <div className="mt-14 flex flex-col gap-6">
-            {featured.length > 0
-              ? featured.map((project, i) => (
-                  <ScrollReveal key={project.slug} delay={i * 60}>
-                    <Link
-                      href={`/portfolio/${project.slug}`}
-                      className="group relative block h-[60vh] w-full overflow-hidden"
-                      style={{ border: "1px solid var(--ec-line)" }}
+            {featured.map((project, i) => (
+              <ScrollReveal key={project.slug} delay={i * 60}>
+                <Link
+                  href={`/portfolio/${project.category}/${project.slug}`}
+                  className="group relative block h-[60vh] w-full overflow-hidden"
+                  style={{ border: "1px solid var(--ec-line)" }}
+                >
+                  <ImageReveal className="h-full w-full">
+                    <Image
+                      src={project.coverImage}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                      sizes="100vw"
+                    />
+                  </ImageReveal>
+
+                  {/* Bottom-left title/category scrim */}
+                  <div
+                    className="absolute inset-x-0 bottom-0 p-8"
+                    style={{
+                      background: "rgba(18,17,16,0.6)",
+                    }}
+                  >
+                    <span className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
+                      {project.client}
+                    </span>
+                    <h3
+                      className="mt-2 text-h3"
+                      style={{ color: "var(--ec-on-ink)" }}
                     >
-                      {project.coverImageId ? (
-                        <ImageReveal className="h-full w-full">
-                          <Image
-                            src={getDriveImageUrl(project.coverImageId)}
-                            alt={project.title}
-                            fill
-                            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                            unoptimized
-                          />
-                        </ImageReveal>
-                      ) : (
-                        <div className="h-full w-full" style={{ background: "var(--ec-ink-2)" }} />
-                      )}
+                      {project.title}
+                    </h3>
+                  </div>
 
-                      {/* Bottom-left title/category scrim */}
-                      <div
-                        className="absolute inset-x-0 bottom-0 p-8"
-                        style={{
-                          background: "rgba(18,17,16,0.6)",
-                        }}
-                      >
-                        {project.category && (
-                          <span className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
-                            {project.category}
-                          </span>
-                        )}
-                        <h3
-                          className="mt-2 text-h3"
-                          style={{ color: "var(--ec-on-ink)" }}
-                        >
-                          {project.title}
-                        </h3>
-                      </div>
-
-                      {/* Hover — View Project */}
-                      <span
-                        className="absolute right-6 top-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          fontWeight: 600,
-                          fontSize: "0.9rem",
-                          color: "var(--ec-red)",
-                        }}
-                      >
-                        View Project &rarr;
-                      </span>
-                    </Link>
-                  </ScrollReveal>
-                ))
-              : placeholderWork.map((item, i) => (
-                  <ScrollReveal key={item.title} delay={i * 60}>
-                    <Link
-                      href="/portfolio"
-                      className="group relative block h-[60vh] w-full overflow-hidden"
-                      style={{ border: "1px solid var(--ec-line)" }}
-                    >
-                      <div className="h-full w-full" style={{ background: "var(--ec-ink-2)" }} />
-
-                      {/* Bottom-left title/category */}
-                      <div className="absolute inset-x-0 bottom-0 p-8">
-                        <span className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
-                          {item.category}
-                        </span>
-                        <h3 className="mt-2 text-h3" style={{ color: "var(--ec-on-ink)" }}>
-                          {item.title}
-                        </h3>
-                      </div>
-
-                      {/* Hover — View Project */}
-                      <span
-                        className="absolute right-6 top-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                        style={{
-                          fontFamily: "var(--font-sans)",
-                          fontWeight: 600,
-                          fontSize: "0.9rem",
-                          color: "var(--ec-red)",
-                        }}
-                      >
-                        View Project &rarr;
-                      </span>
-                    </Link>
-                  </ScrollReveal>
-                ))}
+                  {/* Hover — View Project */}
+                  <span
+                    className="absolute right-6 top-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    style={{
+                      fontFamily: "var(--font-sans)",
+                      fontWeight: 600,
+                      fontSize: "0.9rem",
+                      color: "var(--ec-red)",
+                    }}
+                  >
+                    View Project &rarr;
+                  </span>
+                </Link>
+              </ScrollReveal>
+            ))}
           </div>
 
           <div className="mt-10 text-center sm:hidden">
