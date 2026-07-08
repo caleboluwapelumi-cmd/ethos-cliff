@@ -10,54 +10,9 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  {
-    label: "Email",
-    href: "#",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5v-11Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <path
-          d="m4 6.5 8 6.5 8-6.5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    ),
-  },
-  {
-    label: "Instagram",
-    href: "#",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" />
-      </svg>
-    ),
-  },
-  {
-    label: "LinkedIn",
-    href: "#",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="3.5" y="3.5" width="17" height="17" rx="3" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M8 10.5v6M8 7.75v.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-        <path
-          d="M11.5 16.5v-3.75c0-1.24 1-2.25 2.25-2.25S16 11.51 16 12.75v3.75"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-        <path d="M11.5 12.5v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    ),
-  },
+  { label: "Email", href: "mailto:#" },
+  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "#" },
 ];
 
 export default function Footer() {
@@ -116,15 +71,10 @@ export default function Footer() {
             <p className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
               Contact
             </p>
-            <div className="mt-4 flex items-center gap-3" role="list">
-              {socialLinks.map(({ label, href, icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="footer-social-icon"
-                >
-                  {icon}
+            <div className="mt-4 flex items-center gap-4" role="list">
+              {socialLinks.map(({ label, href }) => (
+                <a key={label} href={href} className="footer-link">
+                  {label}
                 </a>
               ))}
             </div>

@@ -30,7 +30,7 @@ export default function ContactExperience() {
             className="text-hero"
             style={{ fontSize: "clamp(2.25rem, 4vw, 3.5rem)" }}
             lines={[
-              <span key="l1">Let&rsquo;s build</span>,
+              <span key="l1">Let&rsquo;s build{" "}</span>,
               <span key="l2">something remarkable.</span>,
             ]}
           />
