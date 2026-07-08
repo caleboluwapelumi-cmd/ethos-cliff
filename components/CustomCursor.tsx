@@ -13,22 +13,37 @@ export default function CustomCursor() {
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
-    let ringX = window.innerWidth / 2;
-    let ringY = window.innerHeight / 2;
+    let ringX = 0;
+    let ringY = 0;
     let targetX = ringX;
     let targetY = ringY;
     let rafId: number;
+    let hasMoved = false;
+
+    dot.style.opacity = "0";
+    ring.style.opacity = "0";
 
     const onMove = (e: MouseEvent) => {
       targetX = e.clientX;
       targetY = e.clientY;
       dot.style.transform = `translate3d(${targetX}px, ${targetY}px, 0)`;
+
+      if (!hasMoved) {
+        hasMoved = true;
+        ringX = targetX;
+        ringY = targetY;
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+        dot.style.opacity = "";
+        ring.style.opacity = "";
+      }
     };
 
     const tick = () => {
-      ringX += (targetX - ringX) * 0.18;
-      ringY += (targetY - ringY) * 0.18;
-      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      if (hasMoved) {
+        ringX += (targetX - ringX) * 0.18;
+        ringY += (targetY - ringY) * 0.18;
+        ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0)`;
+      }
       rafId = requestAnimationFrame(tick);
     };
 

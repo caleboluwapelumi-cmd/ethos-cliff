@@ -129,9 +129,8 @@ export const PROJECTS: Project[] = [
       "Clean, precise design language — a strong logomark, clinical colour palette, and product packaging that balanced authority with approachability.",
     results:
       "A complete brand identity and packaging system ready for product launch.",
-    coverImage: "/images/POTFOLIO KIT/medsafe/Full Face MedSafe.png",
+    coverImage: "/images/POTFOLIO KIT/medsafe/Medsafe sample.png",
     gallery: [
-      "/images/POTFOLIO KIT/medsafe/Medsafe sample.png",
       "/images/POTFOLIO KIT/medsafe/Medsafe sample 02.png",
       "/images/POTFOLIO KIT/medsafe/Artboard 1.png",
       "/images/POTFOLIO KIT/medsafe/Artboard 2.png",
@@ -177,9 +176,8 @@ export const PROJECTS: Project[] = [
     results:
       "Complete event branding delivered across 25+ individual design assets.",
     coverImage:
-      "/images/POTFOLIO KIT/FULL EVENT BRANDING/GLOBERSHAPERS CONFERENCE.png",
-    gallery: [
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/Global Shaping by TLC.png",
+    gallery: [
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/ID CARD FOR GLOBALSHAPING CONF.png",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/ID CARDS FOR PARTICIPANTS 02.png",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/ID CARDS FOR PARTICIPANTS 03.png",

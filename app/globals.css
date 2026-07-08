@@ -939,6 +939,22 @@ noscript .curtain {
   }
 }
 
+/* ── Unify mismatched stock photography under one visual system ── */
+.img-duotone {
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 500ms ease;
+}
+
+.group:hover .img-duotone {
+  filter: grayscale(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .img-duotone {
+    transition: none;
+  }
+}
+
 /* ── Portfolio placeholder cards ── */
 .ph-card-tile {
   transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);

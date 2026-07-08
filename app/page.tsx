@@ -111,7 +111,7 @@ export default function Home() {
             style={{
               maxWidth: "48ch",
               fontSize: "1.1rem",
-              color: "#3a3a3a",
+              color: "var(--ec-ink-soft)",
               animationDelay: "300ms",
             }}
           >
@@ -311,7 +311,7 @@ export default function Home() {
                         src={img}
                         alt={name}
                         fill
-                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                        className="img-duotone object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                       />
                     </ImageReveal>
                     <span
