@@ -3,7 +3,7 @@ import Image from "next/image";
 import PortfolioHero from "@/components/PortfolioHero";
 import ScrollReveal from "@/components/ScrollReveal";
 import ImageReveal from "@/components/ImageReveal";
-import { CATEGORIES, getProjectsByCategory } from "@/lib/portfolio-data";
+import { PROJECTS, getCategoryBySlug } from "@/lib/portfolio-data";
 
 export const metadata = {
   title: "Portfolio — Ethos Cliff",
@@ -15,61 +15,58 @@ export default function PortfolioPage() {
     <main>
       <PortfolioHero />
 
-      {/* ─────────── Category cards ─────────── */}
+      {/* ─────────── Project grid ─────────── */}
       <section className="section">
         <div className="container">
           <ScrollReveal>
-            <p className="eyebrow">Browse by Category</p>
+            <p className="eyebrow">All Work</p>
           </ScrollReveal>
 
-          <div className="mt-10 grid gap-8 lg:grid-cols-2">
-            {CATEGORIES.map((category, i) => {
-              const projects = getProjectsByCategory(category.slug);
-              const cover = projects[0]?.coverImage;
+          <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {PROJECTS.map((project, i) => {
+              const category = getCategoryBySlug(project.category);
 
               return (
-                <ScrollReveal key={category.slug} delay={i * 80}>
-                  <Link
-                    href={`/portfolio/${category.slug}`}
-                    className="group block"
-                  >
-                    <div className="relative aspect-[16/9] w-full overflow-hidden" style={{ borderRadius: "8px", border: "1px solid var(--ec-line)" }}>
-                      {cover ? (
-                        <ImageReveal className="h-full w-full">
-                          <Image
-                            src={cover}
-                            alt={category.title}
-                            fill
-                            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-                            sizes="(max-width: 1024px) 100vw, 50vw"
-                          />
-                        </ImageReveal>
-                      ) : (
-                        <div className="h-full w-full" style={{ background: "var(--ec-ink-2)" }} />
-                      )}
+                <ScrollReveal key={project.slug} delay={i * 60}>
+                  <Link href={`/portfolio/${project.slug}`} className="group block">
+                    <div
+                      className="relative aspect-[4/3] w-full overflow-hidden"
+                      style={{ borderRadius: "8px", border: "1px solid var(--ec-line)" }}
+                    >
+                      <ImageReveal className="h-full w-full">
+                        <Image
+                          src={project.coverImage}
+                          alt={project.title}
+                          fill
+                          className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                        />
+                      </ImageReveal>
 
-                      <span
-                        className="absolute bottom-6 right-6 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      <div
+                        className="absolute inset-x-0 bottom-0 flex items-end justify-start p-6 opacity-0 transition-opacity duration-[250ms] group-hover:opacity-100"
                         style={{
-                          fontFamily: "var(--font-sans)",
-                          fontWeight: 600,
-                          fontSize: "0.9rem",
-                          color: "var(--ec-red)",
-                          background: "rgba(255,255,255,0.92)",
-                          padding: "0.4rem 0.9rem",
-                          borderRadius: "999px",
+                          background:
+                            "linear-gradient(0deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0) 60%)",
                         }}
                       >
-                        Explore &rarr;
-                      </span>
+                        <span
+                          style={{
+                            fontFamily: "var(--font-sans)",
+                            fontWeight: 600,
+                            fontSize: "0.9rem",
+                            color: "var(--ec-red)",
+                          }}
+                        >
+                          View Project &rarr;
+                        </span>
+                      </div>
                     </div>
 
-                    <h2 className="mt-6 text-h2">{category.title}</h2>
-                    <p className="mt-3 text-body" style={{ fontSize: "1.05rem" }}>
-                      {category.description}
-                    </p>
-                    <p className="mt-4 eyebrow">
-                      {projects.length} {projects.length === 1 ? "Project" : "Projects"}
+                    <p className="mt-5 eyebrow">{category?.label}</p>
+                    <h3 className="portfolio-title mt-2 text-h3">{project.title}</h3>
+                    <p className="mt-2 text-body" style={{ fontSize: "0.9rem" }}>
+                      {project.client}
                     </p>
                   </Link>
                 </ScrollReveal>

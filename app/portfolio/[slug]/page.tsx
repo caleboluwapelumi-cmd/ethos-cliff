@@ -7,18 +7,17 @@ import {
   PROJECTS,
   getCategoryBySlug,
   getProjectBySlug,
-  getProjectsByCategory,
 } from "@/lib/portfolio-data";
 
-type Params = Promise<{ category: string; slug: string }>;
+type Params = Promise<{ slug: string }>;
 
 export function generateStaticParams() {
-  return PROJECTS.map((p) => ({ category: p.category, slug: p.slug }));
+  return PROJECTS.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Params }) {
-  const { category: categorySlug, slug } = await params;
-  const project = getProjectBySlug(categorySlug, slug);
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
   if (!project) return {};
   return {
     title: `${project.title} — Ethos Cliff`,
@@ -27,14 +26,14 @@ export async function generateMetadata({ params }: { params: Params }) {
 }
 
 export default async function ProjectDetailPage({ params }: { params: Params }) {
-  const { category: categorySlug, slug } = await params;
-  const category = getCategoryBySlug(categorySlug);
-  const project = getProjectBySlug(categorySlug, slug);
-  if (!category || !project) notFound();
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+  if (!project) notFound();
 
-  const categoryProjects = getProjectsByCategory(category.slug);
-  const idx = categoryProjects.findIndex((p) => p.slug === project.slug);
-  const nextProject = categoryProjects[(idx + 1) % categoryProjects.length];
+  const category = getCategoryBySlug(project.category);
+
+  const idx = PROJECTS.findIndex((p) => p.slug === project.slug);
+  const nextProject = PROJECTS[(idx + 1) % PROJECTS.length];
 
   return (
     <main>
@@ -44,22 +43,22 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
           <Link href="/portfolio" className="text-link">
             Portfolio
           </Link>{" "}
-          /{" "}
-          <Link href={`/portfolio/${category.slug}`} className="text-link">
-            {category.title}
-          </Link>{" "}
           / {project.title}
         </p>
       </div>
 
       {/* ─────────── Header ─────────── */}
       <header className="container pb-10 pt-6">
-        <p className="eyebrow">{category.label}</p>
+        <p className="eyebrow">{category?.label}</p>
         <h1 className="mt-4 text-hero" style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}>
           {project.title}
         </h1>
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <span className="eyebrow">{project.client}</span>
+          <span style={{ color: "var(--ec-line-strong)" }} aria-hidden="true">
+            &middot;
+          </span>
+          <span className="eyebrow">{category?.title}</span>
           <span style={{ color: "var(--ec-line-strong)" }} aria-hidden="true">
             &middot;
           </span>
@@ -146,7 +145,7 @@ export default async function ProjectDetailPage({ params }: { params: Params }) 
             <div className="container flex items-center justify-between gap-6 py-14">
               <span className="eyebrow">Next Project</span>
               <Link
-                href={`/portfolio/${category.slug}/${nextProject.slug}`}
+                href={`/portfolio/${nextProject.slug}`}
                 className="group inline-flex items-center gap-3 text-h3"
                 style={{ color: "var(--ec-ink)" }}
               >

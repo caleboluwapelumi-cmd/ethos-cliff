@@ -973,6 +973,30 @@ noscript .curtain {
   color: var(--ec-ink);
 }
 
+/* ── Portfolio hero — animated background typography ── */
+@keyframes hero-drift {
+  0% {
+    transform: translateX(-2%);
+  }
+  100% {
+    transform: translateX(2%);
+  }
+}
+
+.hero-drift-text {
+  animation-name: hero-drift;
+  animation-duration: var(--drift-duration, 10s);
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift-text {
+    animation: none;
+  }
+}
+
 /* ── Contact page — step progress sidebar ── */
 .step-sidebar-num {
   display: inline-flex;

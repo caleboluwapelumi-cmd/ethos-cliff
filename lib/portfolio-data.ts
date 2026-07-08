@@ -210,17 +210,14 @@ export function getProjectsByCategory(categorySlug: string): Project[] {
   return PROJECTS.filter((p) => p.category === categorySlug);
 }
 
-export function getProjectBySlug(
-  categorySlug: string,
-  projectSlug: string,
-): Project | null {
-  return (
-    PROJECTS.find(
-      (p) => p.category === categorySlug && p.slug === projectSlug,
-    ) ?? null
-  );
+export function getProjectBySlug(slug: string): Project | null {
+  return PROJECTS.find((p) => p.slug === slug) ?? null;
 }
 
 export function getCategoryBySlug(slug: string): Category | null {
   return CATEGORIES.find((c) => c.slug === slug) ?? null;
+}
+
+export function getCategoryForProject(project: Project): Category | null {
+  return getCategoryBySlug(project.category);
 }

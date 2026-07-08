@@ -226,7 +226,7 @@ export default function Home() {
             {featured.map((project, i) => (
               <ScrollReveal key={project.slug} delay={i * 60}>
                 <Link
-                  href={`/portfolio/${project.category}/${project.slug}`}
+                  href={`/portfolio/${project.slug}`}
                   className="group relative block h-[60vh] w-full overflow-hidden"
                   style={{ border: "1px solid var(--ec-line)" }}
                 >
