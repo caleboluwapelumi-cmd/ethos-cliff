@@ -18,7 +18,7 @@ export default function PortfolioHero() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => {
       setActive((i) => (i + 1) % SLIDES.length);
-    }, 4000);
+    }, 2500);
     return () => clearInterval(id);
   }, []);
 
@@ -35,7 +35,7 @@ export default function PortfolioHero() {
             className="absolute inset-0 transition-opacity"
             style={{
               opacity: i === active ? 0.35 : 0,
-              transitionDuration: "800ms",
+              transitionDuration: "400ms",
               transitionTimingFunction: "ease",
             }}
           >
@@ -55,7 +55,7 @@ export default function PortfolioHero() {
             className="text-hero"
             style={{ fontSize: "clamp(2.5rem, 6vw, 5.5rem)", color: "var(--ec-on-ink)" }}
             lines={[
-              <span key="l1">Brands We&rsquo;ve Helped</span>,
+              <span key="l1">Brands We&rsquo;ve Helped{" "}</span>,
               <span key="l2">Find Their Voice.</span>,
             ]}
           />
