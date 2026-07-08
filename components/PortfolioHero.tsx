@@ -77,7 +77,15 @@ export default function PortfolioHero() {
               transitionTimingFunction: "ease",
             }}
           >
-            <Image src={src} alt="" fill className="object-cover" priority={i === 0} />
+            <Image
+              src={src}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              quality={50}
+              priority={i === 0}
+            />
           </div>
         ))}
       </div>
