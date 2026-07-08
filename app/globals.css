@@ -1254,6 +1254,135 @@ noscript .curtain {
   justify-content: center;
 }
 
+/* ─────────── Lightbox ─────────── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+.lightbox-overlay.is-visible {
+  opacity: 1;
+}
+
+.lightbox-image-wrap {
+  position: relative;
+  width: 90vw;
+  height: 85vh;
+  max-width: 90vw;
+  max-height: 85vh;
+  transform: scale(0.95);
+  transition: transform 200ms ease-out;
+}
+
+.lightbox-overlay.is-visible .lightbox-image-wrap {
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-image-wrap {
+    transform: none;
+    transition: none;
+  }
+}
+
+.lightbox-counter {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.lightbox-btn {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 200ms, border-color 200ms;
+}
+
+.lightbox-btn:hover {
+  background: var(--ec-red);
+  border-color: var(--ec-red);
+}
+
+.lightbox-close {
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+}
+
+.lightbox-prev {
+  left: 1.5rem;
+}
+
+.lightbox-next {
+  right: 1.5rem;
+}
+
+/* ─────────── Gallery expand affordance ─────────── */
+.gallery-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.gallery-item-expand {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+.gallery-item:hover .gallery-item-expand,
+.gallery-item:focus-visible .gallery-item-expand {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item-expand {
+    transition: none;
+  }
+}
+
 .favicon-placeholder-label {
   text-align: center;
   padding-inline: 1rem;
