@@ -95,7 +95,7 @@ export default function ProcessTimeline() {
             </span>
             <div
               className="relative flex flex-col items-center lg:items-start"
-              style={{ zIndex: 1, marginTop: "clamp(1.75rem, 2.5vw, 2.75rem)" }}
+              style={{ zIndex: 1, marginTop: "clamp(3.5rem, 5.5vw, 5.5rem)" }}
             >
               <h3 className="text-h3">{name}</h3>
               <p className="mt-2 text-body" style={{ maxWidth: "24ch" }}>
