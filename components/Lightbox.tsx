@@ -188,10 +188,10 @@ export default function Lightbox({
           src={images[currentIndex]}
           alt={`Image ${currentIndex + 1} of ${images.length}`}
           fill
-          unoptimized
           priority
+          quality={80}
           style={{ objectFit: "contain" }}
-          sizes="90vw"
+          sizes="(max-width: 1400px) 90vw, 1400px"
         />
       </div>
     </div>,
