@@ -29,7 +29,7 @@ export default function Footer() {
               href="/"
               className="block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
             >
-              <WordMark showMark size="lg" tone="on-ink" />
+              <WordMark showMark stackByline size="lg" tone="on-ink" />
             </Link>
             <p
               className="mt-4"

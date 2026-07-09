@@ -5,6 +5,7 @@ interface Props {
   tone?: "ink" | "on-ink";
   color?: string;
   showMark?: boolean;
+  stackByline?: boolean;
 }
 
 const LOGO_ASPECT = 1600 / 541;
@@ -14,6 +15,7 @@ export default function WordMark({
   tone = "ink",
   color,
   showMark = false,
+  stackByline = false,
 }: Props) {
   const headline = size === "lg" ? "1.5rem" : "1.1rem";
   const toneHeadlineColor = tone === "ink" ? "var(--ec-ink)" : "var(--ec-on-ink)";
@@ -61,9 +63,17 @@ export default function WordMark({
             fontSize: `calc(${headline} * 0.7)`,
             fontWeight: 400,
             color: bylineColor,
+            lineHeight: stackByline ? 1.3 : "inherit",
           }}
         >
-          by The-Olu Bamigboye
+          {stackByline ? (
+            <>
+              <span style={{ display: "block" }}>by The-Olu</span>
+              <span style={{ display: "block" }}>Bamigboye</span>
+            </>
+          ) : (
+            "by The-Olu Bamigboye"
+          )}
         </span>
       </span>
     );

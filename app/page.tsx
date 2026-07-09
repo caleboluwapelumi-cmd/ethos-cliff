@@ -46,12 +46,6 @@ const services = [
     img: "/images/services/graphic-design.jpg",
   },
   {
-    n: "06",
-    name: "Elevations",
-    hook: "You've built something real. Now let's make it legendary.",
-    img: "/images/services/elevations.jpg",
-  },
-  {
     n: "07",
     name: "Social Media Management",
     hook: "Consistency is a superpower most businesses underestimate.",

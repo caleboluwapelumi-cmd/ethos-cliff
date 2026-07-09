@@ -45,7 +45,7 @@ export default function AboutPage() {
             alt=""
             fill
             priority
-            style={{ objectFit: "contain" }}
+            style={{ objectFit: "contain", mixBlendMode: "screen" }}
           />
         </div>
 
@@ -129,14 +129,19 @@ export default function AboutPage() {
         style={{ background: "var(--ec-ink-gradient)" }}
       >
         <div className="container">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:items-center">
+          <ScrollReveal>
+            <p
+              className="eyebrow text-center"
+              style={{ color: "var(--ec-on-ink-soft)" }}
+            >
+              The Mind Behind the Brand
+            </p>
+          </ScrollReveal>
+          <div className="mt-8 grid gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-20 lg:items-center">
             {/* Portrait */}
             <ScrollReveal>
               <div>
-                <p className="eyebrow" style={{ color: "var(--ec-on-ink-soft)" }}>
-                  The Mind Behind the Brand
-                </p>
-                <h2 className="mt-4 mb-8 text-h2 lg:hidden" style={{ color: "var(--ec-on-ink)" }}>
+                <h2 className="mb-8 text-h2 lg:hidden" style={{ color: "var(--ec-on-ink)" }}>
                   Meet the CEO.
                 </h2>
                 <div
@@ -273,7 +278,7 @@ export default function AboutPage() {
               </p>
             </ScrollReveal>
 
-            {/* Quote 3 — large, indented center, staggered down */}
+            {/* Quote 3 — large, centered, staggered down */}
             <ScrollReveal delay={200}>
               <p
                 className="relative"
@@ -285,7 +290,9 @@ export default function AboutPage() {
                   lineHeight: 1.22,
                   maxWidth: "20ch",
                   marginTop: "clamp(2.5rem, 6vw, 4.5rem)",
-                  marginLeft: "clamp(0px, 10vw, 7rem)",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  textAlign: "center",
                 }}
               >
                 &ldquo;The right story, told right, changes everything.&rdquo;
