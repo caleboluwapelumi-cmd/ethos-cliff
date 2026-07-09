@@ -60,7 +60,7 @@ export default function Nav() {
           href="/"
           className="block rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30"
         >
-          <WordMark showMark tone={showInverted ? "on-ink" : "ink"} />
+          <WordMark showMark stackByline tone={showInverted ? "on-ink" : "ink"} />
         </Link>
 
         {/* Desktop links */}
