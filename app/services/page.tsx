@@ -61,7 +61,7 @@ export default function ServicesPage() {
   return (
     <main>
       {/* ─────────── Hero ─────────── */}
-      <section className="relative flex min-h-[60vh] flex-col justify-center overflow-hidden pt-24 sm:pt-28">
+      <section className="relative flex min-h-[60vh] flex-col justify-center overflow-hidden pt-24 pb-16 sm:pt-28 sm:pb-20">
         <span className="hero-decorative-number" aria-hidden="true">
           01&mdash;07
         </span>

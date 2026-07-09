@@ -1178,7 +1178,7 @@ noscript .curtain {
 .hero-decorative-number {
   position: absolute;
   right: clamp(1rem, 4vw, 3rem);
-  bottom: clamp(-2rem, -3vw, -0.5rem);
+  bottom: clamp(0.5rem, 1vw, 1.5rem);
   z-index: 0;
   font-family: var(--font-display);
   font-weight: 700;

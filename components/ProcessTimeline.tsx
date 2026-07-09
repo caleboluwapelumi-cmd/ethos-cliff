@@ -52,10 +52,10 @@ export default function ProcessTimeline() {
   }, []);
 
   return (
-    <div ref={ref} className="relative mt-16">
+    <div ref={ref} className="relative mt-16 pt-12">
       {/* Connecting line — desktop only, draws left to right on scroll into view */}
       <div
-        className="absolute top-6 hidden lg:block"
+        className="absolute top-0 hidden lg:block"
         style={{
           left: "0%",
           right: "0%",
