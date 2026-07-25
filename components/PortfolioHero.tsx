@@ -5,10 +5,9 @@ import Image from "next/image";
 import TextReveal from "@/components/TextReveal";
 
 const SLIDES = [
-  "/images/POTFOLIO KIT/Atinuda/mockup alatinuda.png",
-  "/images/POTFOLIO KIT/ETANTOS HAIR BRAND/etanto naturals bottles-Recovered.png",
-  "/images/POTFOLIO KIT/RINA DONE/Store Entrance Logo Mockup (2).png",
-  "/images/POTFOLIO KIT/medsafe/Full Face MedSafe.png",
+  "/images/POTFOLIO KIT/Atinuda/Atinuda Male 1.png",
+  "/images/POTFOLIO KIT/ETANTOS HAIR BRAND/etanto naturals.png",
+  "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC logo full.png",
 ];
 
 export default function PortfolioHero() {

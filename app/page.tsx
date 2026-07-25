@@ -11,8 +11,16 @@ import { PROJECTS } from "@/lib/portfolio-data";
 const featuredSlugs = [
   "atinuda-brand-identity",
   "etantos-hair-brand",
-  "rina-luxury-brand",
+  "globershapers-event-branding",
 ];
+
+// Homepage tile covers (overrides the portfolio coverImage for the Selected Work grid only)
+const featuredCovers: Record<string, string> = {
+  "atinuda-brand-identity": "/images/POTFOLIO KIT/Atinuda/Atinuda Male 1.png",
+  "etantos-hair-brand": "/images/POTFOLIO KIT/ETANTOS HAIR BRAND/etanto naturals.png",
+  "globershapers-event-branding":
+    "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC logo full.png",
+};
 
 const services = [
   {
@@ -226,7 +234,7 @@ export default function Home() {
                 >
                   <ImageReveal className="h-full w-full">
                     <Image
-                      src={project.coverImage}
+                      src={featuredCovers[project.slug] ?? project.coverImage}
                       alt={project.title}
                       fill
                       className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
