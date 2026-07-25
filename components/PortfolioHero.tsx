@@ -7,6 +7,7 @@ import TextReveal from "@/components/TextReveal";
 const SLIDES = [
   "/images/POTFOLIO KIT/Atinuda/Atinuda Male 1.png",
   "/images/POTFOLIO KIT/ETANTOS HAIR BRAND/etanto naturals.png",
+  "/images/POTFOLIO KIT/RINA DONE/Store Entrance Logo Mockup (2).png",
   "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC logo full.png",
 ];
 

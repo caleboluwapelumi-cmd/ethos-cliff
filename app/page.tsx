@@ -11,15 +11,13 @@ import { PROJECTS } from "@/lib/portfolio-data";
 const featuredSlugs = [
   "atinuda-brand-identity",
   "etantos-hair-brand",
-  "globershapers-event-branding",
+  "rina-luxury-brand",
 ];
 
 // Homepage tile covers (overrides the portfolio coverImage for the Selected Work grid only)
 const featuredCovers: Record<string, string> = {
   "atinuda-brand-identity": "/images/POTFOLIO KIT/Atinuda/Atinuda Male 1.png",
   "etantos-hair-brand": "/images/POTFOLIO KIT/ETANTOS HAIR BRAND/etanto naturals.png",
-  "globershapers-event-branding":
-    "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC logo full.png",
 };
 
 const services = [
