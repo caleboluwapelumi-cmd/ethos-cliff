@@ -5,14 +5,28 @@ import Image from "next/image";
 import TextReveal from "@/components/TextReveal";
 
 const SLIDES = [
-  "/images/POTFOLIO KIT/Atinuda/Atinuda Male 1.png",
-  "/images/POTFOLIO KIT/ETANTOS HAIR BRAND/etanto naturals.png",
-  "/images/POTFOLIO KIT/RINA DONE/Store Entrance Logo Mockup (2).png",
-  "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC logo full.png",
+  "/images/POTFOLIO KIT/Atinuda/Atinuda Male 1.webp",
+  "/images/POTFOLIO KIT/ETANTOS HAIR BRAND/etanto naturals.webp",
+  "/images/POTFOLIO KIT/RINA DONE/Store Entrance Logo Mockup (2).webp",
+  "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC logo full.webp",
 ];
 
 export default function PortfolioHero() {
   const [active, setActive] = useState(0);
+  // All four slides are stacked in-viewport, so without gating they'd all be
+  // fetched at once and compete with the first slide (the LCP image) for
+  // bandwidth. Hold the other three back until the page has finished loading.
+  const [loadRest, setLoadRest] = useState(false);
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setLoadRest(true);
+    } else {
+      const onLoad = () => setLoadRest(true);
+      window.addEventListener("load", onLoad);
+      return () => window.removeEventListener("load", onLoad);
+    }
+  }, []);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -40,15 +54,17 @@ export default function PortfolioHero() {
               transitionTimingFunction: "ease",
             }}
           >
-            <Image
-              src={src}
-              alt=""
-              fill
-              className="object-cover"
-              sizes="100vw"
-              quality={50}
-              priority={i === 0}
-            />
+            {(i === 0 || loadRest) && (
+              <Image
+                src={src}
+                alt=""
+                fill
+                className="object-cover"
+                sizes="100vw"
+                quality={50}
+                priority={i === 0}
+              />
+            )}
           </div>
         ))}
       </div>

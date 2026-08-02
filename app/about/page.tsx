@@ -149,7 +149,7 @@ export default function AboutPage() {
                   style={{ borderRadius: "8px", border: "1px solid rgba(255,255,255,0.1)" }}
                 >
                   <Image
-                    src="/images/ceo.jpeg"
+                    src="/images/ceo.webp"
                     alt="Israel Olumide Bamigboye — Founder & Creative Director, Ethos Cliff"
                     fill
                     className="object-cover"

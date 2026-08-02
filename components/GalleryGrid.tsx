@@ -21,11 +21,14 @@ export default function GalleryGrid({ images, alt, indexOffset = 0, onOpen }: Pr
             onClick={() => onOpen(indexOffset + i)}
             aria-label={`View ${alt} gallery image ${i + 1} full-screen`}
           >
+            {/* Two masonry columns inside .container, so each cell is ~half the
+                content width — never the full viewport. */}
             <Image
               src={src}
               alt={alt}
               width={800}
               height={600}
+              sizes="(max-width: 1200px) 50vw, 528px"
               className="w-full object-cover"
               style={{ borderRadius: "4px" }}
             />

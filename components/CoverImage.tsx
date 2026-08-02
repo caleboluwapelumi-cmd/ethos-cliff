@@ -19,7 +19,15 @@ export default function CoverImage({ src, alt, onOpen }: Props) {
       aria-label={`View ${alt} cover image full-screen`}
     >
       <ImageReveal className="h-full w-full">
-        <Image src={src} alt={alt} fill className="object-cover" priority sizes="100vw" />
+        {/* Sits inside .container (max-width 1200px), so it never renders full-bleed. */}
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover"
+          priority
+          sizes="(max-width: 1200px) 100vw, 1072px"
+        />
       </ImageReveal>
       <span className="gallery-item-expand" aria-hidden="true">
         &#8599;

@@ -39,7 +39,7 @@ export default function PortfolioPage() {
                           alt={project.title}
                           fill
                           className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          sizes="(max-width: 1024px) 100vw, 528px"
                         />
                       </ImageReveal>
 
