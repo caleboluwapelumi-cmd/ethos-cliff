@@ -209,8 +209,9 @@ export const PROJECTS: Project[] = [
     results:
       "Complete event branding delivered across 25+ individual design assets.",
     coverImage:
-      "/images/POTFOLIO KIT/FULL EVENT BRANDING/Global Shaping by TLC.webp",
+      "/images/POTFOLIO KIT/FULL EVENT BRANDING/GLOBAL SHAPERS ID HERO.webp",
     gallery: [
+      "/images/POTFOLIO KIT/FULL EVENT BRANDING/Global Shaping by TLC.webp",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/GLOBERSHAPERS CONFERENCE.webp",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/ID CARD FOR GLOBALSHAPING CONF.webp",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/ID CARDS FOR PARTICIPANTS 02.webp",
