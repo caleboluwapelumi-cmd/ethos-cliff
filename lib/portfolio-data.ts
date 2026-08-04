@@ -208,9 +208,11 @@ export const PROJECTS: Project[] = [
       "We built one identity and applied it end to end. A co-branded lockup pairing Transformational Leadership Circle with the Global Shapers Conference anchored the system, then ran through the announcement flyer, the printed participant ID cards and badge reels, and the presentation templates used on stage. We shot the day ourselves — sessions, open discussion, and posed participant portraits — and finished every frame with the same lockup, so the photo set left the room already branded.",
     results:
       "One identity applied everywhere, from the badge on a participant's chest to the last photograph published — over 50 branded frames delivered from a single day.",
-    coverImage: "/images/POTFOLIO KIT/FULL EVENT BRANDING/DSC_3950.webp",
+    coverImage:
+      "/images/POTFOLIO KIT/FULL EVENT BRANDING/Global Shaping by TLC - cropped.webp",
     gallery: [
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/Global Shaping by TLC.webp",
+      "/images/POTFOLIO KIT/FULL EVENT BRANDING/DSC_3950.webp",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/DSC_3619.webp",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/DSC_3819.webp",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/DSC_3911.webp",
