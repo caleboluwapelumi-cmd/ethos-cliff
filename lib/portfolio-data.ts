@@ -42,7 +42,7 @@ export const CATEGORIES: Category[] = [
     challenge:
       "One-off design requests often produce disconnected outputs — an event flyer that doesn't match the ID cards, an invitation suite that doesn't reflect the occasion's tone. Details matter.",
     approach:
-      "We design with the full picture in mind. Every piece of collateral — from conference materials to wedding invitation suites — is designed as part of a cohesive visual system, not a standalone asset.",
+      "We design with the full picture in mind. Every piece of collateral — from conference materials to invitation suites — is designed as part of a cohesive visual system, not a standalone asset.",
   },
 ];
 
@@ -221,25 +221,6 @@ export const PROJECTS: Project[] = [
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/ID CARDS FOR PARTICIPANTS 07.webp",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC full logo.webp",
       "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC logo full.webp",
-    ],
-  },
-  {
-    slug: "wedding-invitation-suite",
-    category: "graphics-design",
-    title: "Wedding Invitation Suite",
-    client: "Private Client",
-    year: "2025",
-    summary:
-      "Elegant wedding invitation suite — front and back card design with envelope treatment.",
-    challenge:
-      "A couple needed wedding stationery that felt personal, elegant, and memorable — not templated.",
-    approach:
-      "A bespoke invitation suite designed around the couple's aesthetic — front card, back variant, and envelope front, all cohesive.",
-    results: "A complete wedding invitation suite delivered print-ready.",
-    coverImage:
-      "/images/POTFOLIO KIT/WEDDING INVITE/INVITATION CARD BACK VARIENT.webp",
-    gallery: [
-      "/images/POTFOLIO KIT/WEDDING INVITE/INVITATION CARD envelope front.webp",
     ],
   },
 ];
