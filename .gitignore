@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# windows shortcuts (machine-local, meaningless in the repo)
+*.lnk
+
 # debug
 npm-debug.log*
 yarn-debug.log*
