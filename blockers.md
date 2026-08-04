@@ -29,17 +29,20 @@ Until set up, `/work` shows "No projects yet — check back soon." This is inten
 
 ---
 
-## 2. Footer contact info — placeholders not replaced
+## 2. Contact info — location still a placeholder
 
-**File:** `components/Footer.tsx`
+**File:** `components/SocialLinks.tsx`
 
-The footer currently renders literal bracketed placeholders:
+Social/contact links are now wired with real values (used by both `Footer.tsx` and
+`ContactExperience.tsx` via `SocialLinks`):
 
-```
-[Email] · [Phone] · [Location]
-```
+- Email — `ethoscliff@gmail.com`
+- Instagram — `@ethoscliff`
+- Behance — `bamigboyeisrael1` (replaces the LinkedIn slot; no LinkedIn provided)
+- WhatsApp — `+234 816 078 4712`
 
-Replace with real values once the client provides them. Do not invent values.
+Still outstanding: **physical location / address** has not been provided, so no
+location is rendered anywhere. Add it once the client supplies it. Do not invent a value.
 
 ---
 
