@@ -8,7 +8,7 @@ const SLIDES = [
   "/images/POTFOLIO KIT/Atinuda/Atinuda Male 1.webp",
   "/images/POTFOLIO KIT/ETANTOS HAIR BRAND/etanto naturals.webp",
   "/images/POTFOLIO KIT/RINA DONE/Store Entrance Logo Mockup (2).webp",
-  "/images/POTFOLIO KIT/FULL EVENT BRANDING/LOGO TLC logo full.webp",
+  "/images/POTFOLIO KIT/FULL EVENT BRANDING/DSC_3950.webp",
 ];
 
 export default function PortfolioHero() {
